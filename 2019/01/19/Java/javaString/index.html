@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是一个神奇的世界"><title>String类 | 梦之彼岸</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">String类</h1><a id="logo" href="/.">梦之彼岸</a><p class="description">只有神知道的世界</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/message/"><i class="fa fa-rss"> 留言</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">String类</h1><div class="post-meta">Jan 19, 2019</div><a class="disqus-comment-count" href="/2019/01/19/Java/javaString/#vcomment"><span class="valine-comment-count" data-xid="/2019/01/19/Java/javaString/"></span><span> Comment</span></a><div class="post-content"><ol>
+<li>String类型访问里面的每一个字符可以使用s.charAt(i)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"hello"</span>;  <span class="comment">//s.charAt(0) = h</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>产生随机数<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> b = Math.random();   <span class="comment">//产生[0,1)之间的小数</span></span><br><span class="line"><span class="keyword">int</span> n = (<span class="keyword">int</span>)(b * <span class="number">5</span>);       <span class="comment">//产生[0,5)之间的整数</span></span><br><span class="line"><span class="keyword">int</span> m = <span class="number">1</span> + (<span class="keyword">int</span>)(b * <span class="number">6</span>);   <span class="comment">//产生[1,6]之间的整数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li>public boolean equals(String s),比较当前String对象字符序列和参数的字符序列是否相等<br>equalsIgnoreCase()方法在比较时会忽略大小写<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String Tom = <span class="keyword">new</span> String(<span class="string">"木头人"</span>);</span><br><span class="line">String Marry = <span class="keyword">new</span> String(<span class="string">"植物人"</span>); </span><br><span class="line">String Jack = <span class="keyword">new</span> String(<span class="string">"植物人"</span><span class="string">");</span></span><br><span class="line"><span class="string">System.out.println(Tom.equals(Marry));  //结果为false</span></span><br><span class="line"><span class="string">System.out.println(Jack.equals(Marry)); //结果为true </span></span><br><span class="line"><span class="string">System.out.println(Jack == Marry);      //结果为false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由于string对象Marry和Jack存放的是引用,其所在的内存不一样,因而内容相同却不相等</p>
+<hr>
+<ol start="4">
+<li>public boolean startsWith(String s)/endsWith(String s)<br>s1.startsWith(s2)&emsp;:判断当前String对象的字符序列前缀是否和参数相同<br>s1.endsWith(s2)&emsp;:判断当前String对象的字符序列后缀是否和参数相同</li>
+</ol>
+<hr>
+<ol start="5">
+<li>public int compareTo(String s)<br>s1.compareTo(s2)&emsp; :按照字典序比较s1和s2的字符序列是否相同,相同返回0,s1 &gt; s2返回正值, s1 &lt; s2返回负值</li>
+</ol>
+<hr>
+<ol start="6">
+<li>public boolean contains(String s)<br>s1.contains(s2):判断s1中是否包含s2<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String Tom = <span class="string">"students"</span>;</span><br><span class="line">System.out.println(Tom.contains(<span class="string">"stu"</span>)); <span class="comment">//值为ture</span></span><br><span class="line">System.out.println(Tom.contains(<span class="string">"ab"</span>)); <span class="comment">//值为false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="7">
+<li>public int indexOf(String s) / lastIndexOf(String s)<br>s1.indexOf(s2):从s1中的0位置开始搜索s2,并返回首次出现s2的位置,如果没有找到就返回-1,lastIndexOf()则是从末尾开始搜索<br>indexOf(String str, int startpoint)重载方法,startpoint指定检索的开始位置<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String tom = <span class="string">"I am a good cat"</span>;</span><br><span class="line">tom.indexOf(<span class="string">"a"</span>);       <span class="comment">//值为2</span></span><br><span class="line">tom.indexOf(<span class="string">"good"</span>, <span class="number">2</span>);  <span class="comment">//值为7</span></span><br><span class="line">tom.indexOf(<span class="string">"a"</span>, <span class="number">7</span>);     <span class="comment">//值为13</span></span><br><span class="line">tom.indexOf(<span class="string">"w"</span>, <span class="number">2</span>);     <span class="comment">//值为-1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="8">
+<li>public String substring(int startpoint)<br>s2 = s1.substring(start);       //从start位置开始复制s1中字符串到s2中<br>s2 = s1.substring(start, end)   //从start位置开始截至end-1复制s1中字符串到s2中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abcdefg"</span>;</span><br><span class="line">String s1 = s.substring(<span class="number">0</span>);  <span class="comment">//s1 = "abcdefg";</span></span><br><span class="line">String s2 = s.substring(<span class="number">2</span>, <span class="number">4</span>);  <span class="comment">//s2 = "cd";</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="9">
+<li>public String trim()<br>去掉字符序列中的前后空格<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">" abcd "</span>;</span><br><span class="line">System.out.println(s.trim());  <span class="comment">//结果为abcd</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="10">
+<li>public void getChars(int start, int end, char c[], int offset)<br>将String对象从start到end-1的字符存放到从offset位置开始的c数组中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abcdefg"</span>;</span><br><span class="line"><span class="keyword">char</span> c[] = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">10</span>];</span><br><span class="line">s.getChars(<span class="number">0</span>, <span class="number">2</span>, c, <span class="number">0</span>);</span><br><span class="line">System.out.println(c);   <span class="comment">//输出结果为ab</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="11">
+<li>public char[] toCharArray()<br>将String中的字符序列全部存放在数组中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"abcdefghijk"</span>;</span><br><span class="line"><span class="keyword">char</span> c[] = s.toCharArray();</span><br><span class="line">System.out.println(c);      <span class="comment">//输出结果为abcdefghijk</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="12">
+<li>public boolean matches(String regex)<br>判断当前字符串是否匹配给定的正则表达式, 是返回true, 否则返回false<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"[1234]?"</span>;</span><br><span class="line">String s1 = <span class="string">"123"</span>;</span><br><span class="line">System.out.println(s1.matches(s1));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="13">
+<li>public String repalceAll(String regex, String replacement)<br>匹配当前对象中字符序列和regex中相同的, 用replacement全部替换<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">"hello"</span>;</span><br><span class="line">String s1 = <span class="string">"hello world"</span>;</span><br><span class="line">System.out.println(s1.replacement(s, <span class="string">"welcome to my"</span>)); <span class="comment">//结果为welcome to my world</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/01/19/Java/questionBankExport/">java题库导出</a><a class="next" href="/2019/01/19/Java/graphicsLibrary/">java图形库学习</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'GKMFyMScu4V4Os75j9SonSy3-gzGzoHsz',
+  appKey:'L4Wd5RclgNBPXtHG7m6n5dsB',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/python/learnPython/">python</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a><ul></ul><a href="https://pintia.cn/" title="pta" target="_blank">pta</a><ul></ul><a href="https://linux.cn/" title="Linux" target="_blank">Linux</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">梦之彼岸.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

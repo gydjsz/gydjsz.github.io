@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是一个神奇的世界"><title>二分图 | 梦之彼岸</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">二分图</h1><a id="logo" href="/.">梦之彼岸</a><p class="description">只有神知道的世界</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/message/"><i class="fa fa-rss"> 留言</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">二分图</h1><div class="post-meta">Jan 19, 2019</div><a class="disqus-comment-count" href="/2019/01/19/algorithm/bipartiteGraph/#vcomment"><span class="valine-comment-count" data-xid="/2019/01/19/algorithm/bipartiteGraph/"></span><span> Comment</span></a><div class="post-content"><p>参考连接:<br><a href="https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E5%9B%BE/9089095?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E5%9B%BE/9089095?fr=aladdin</a><br><a href="https://blog.csdn.net/sixdaycoder/article/details/47720471" target="_blank" rel="noopener">https://blog.csdn.net/sixdaycoder/article/details/47720471</a><br><a href="http://blog.jobbole.com/106084/" target="_blank" rel="noopener">http://blog.jobbole.com/106084/</a></p>
+<p><strong>几个概念</strong></p>
+<ol>
+<li><p>二分图<br>二分图又称作二部图，是图论中的一种特殊模型。 设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边（i，j）所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。</p>
+</li>
+<li><p>最大匹配问题<br>给定一个二分图G，在G的一个子图M中，M的边集中的任意两条边都不依附于同一个顶点，则称M是一个匹配.选择这样的边数最大的子集称为图的最大匹配问题。</p>
+</li>
+<li><p>完备匹配(complete matching)是匹配了二分图较小集合（二分图X，Y中小的那个）的所有点的匹配。<br>完美匹配(perfect matching)是匹配了所有点的匹配。</p>
+</li>
+<li><p>最佳匹配<br>如果二分图的每条边都有一个权（可以是负数），要求一种完备匹配方案，使得所有匹配边的权和最大，记做最佳完美匹配。（特殊的，当所有边的权为1时，就是最大完备匹配问题）</p>
+</li>
+<li><p>最小顶点覆盖<br>在二分图中寻找一个尽量小的点集，使图中每一条边至少有一个点在该点集中。<br>　　最小顶点覆盖 == 最大匹配。</p>
+</li>
+<li><p>最小路径覆盖<br>在二分图中寻找一个尽量小的边集，使图中每一个点都是该边集中某条边的端点。<br>　　最小路径覆盖 == |V| - 最大匹配。</p>
+</li>
+<li><p>最大独立集<br>在N个点中选出来一个最大点集，使这个点集中的任意两点之间都没有边。<br>　　最大独立集 == 顶点数 - 最大匹配。</p>
+</li>
+<li><p>交替路和增广路<br><img src="http://ww2.sinaimg.cn/large/7cc829d3gw1f89lnzbetkj204j04u74f.jpg" alt=""></p>
+</li>
+</ol>
+<p>交替路：从一个未匹配点出发，依次经过非匹配边、匹配边、非匹配边…形成的路径叫交替路。</p>
+<p><img src="http://ww2.sinaimg.cn/mw690/7cc829d3gw1f89lo04o2wj207y01y3yi.jpg" alt=""></p>
+<p>增广路的定义(也称增广轨或交错轨):从一个未匹配点出发，走交替路，如果途径另一个未匹配点（出发的点不算），则这条交替路称为增广路.</p>
+<p>由增广路的定义可以推出下述三个结论:<br>1) P的路径长度必定为奇数，第一条边和最后一条边都不属于M.<br>2) P经过取反操作可以得到一个更大的匹配M’.<br>3) M为G的最大匹配当且仅当不存在相对于M的增广路径.</p>
+<p><strong>匈牙利算法和km算法</strong><br><a href="https://www.cnblogs.com/logosG/p/logos.html" target="_blank" rel="noopener">https://www.cnblogs.com/logosG/p/logos.html</a><br><a href="https://blog.csdn.net/ling_wang/article/details/79830980?utm_source=blogxgwz3" target="_blank" rel="noopener">https://blog.csdn.net/ling_wang/article/details/79830980?utm_source=blogxgwz3</a><br><a href="https://www.cnblogs.com/zhanzhao/p/3895880.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhanzhao/p/3895880.html</a><br><a href="https://blog.csdn.net/ling_wang/article/details/79830980?utm_source=blogxgwz3" target="_blank" rel="noopener">https://blog.csdn.net/ling_wang/article/details/79830980?utm_source=blogxgwz3</a></p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/01/19/algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a><a class="next" href="/2019/01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'GKMFyMScu4V4Os75j9SonSy3-gzGzoHsz',
+  appKey:'L4Wd5RclgNBPXtHG7m6n5dsB',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/python/learnPython/">python</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a><ul></ul><a href="https://pintia.cn/" title="pta" target="_blank">pta</a><ul></ul><a href="https://linux.cn/" title="Linux" target="_blank">Linux</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">梦之彼岸.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

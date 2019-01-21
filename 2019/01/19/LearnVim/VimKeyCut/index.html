@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是一个神奇的世界"><title>vim快捷键 | 梦之彼岸</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">vim快捷键</h1><a id="logo" href="/.">梦之彼岸</a><p class="description">只有神知道的世界</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/message/"><i class="fa fa-rss"> 留言</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">vim快捷键</h1><div class="post-meta">Jan 19, 2019</div><a class="disqus-comment-count" href="/2019/01/19/LearnVim/VimKeyCut/#vcomment"><span class="valine-comment-count" data-xid="/2019/01/19/LearnVim/VimKeyCut/"></span><span> Comment</span></a><div class="post-content"><p>[参考链接]<a href="https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html" target="_blank" rel="noopener">https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html</a><br>[参考链接]<a href="https://blog.csdn.net/scaleqiao/article/details/45153379" target="_blank" rel="noopener">https://blog.csdn.net/scaleqiao/article/details/45153379</a></p>
+<font size="3"><strong>VIM光标跳转</strong></font>
+
+<p>h, j, k, l :左, 下, 上, 右<br>gj :向下移动一行<br>gk :向上移动一行<br>gg :移动到文件首<br>G :移动到文件末尾<br>w :向前移动一个单词,光标停留在下一个单词开头<br>W :向前移动一个单词,光标停留在下一个单词开头,但忽略标点<br>e :向前移动一个单词,光标停留在单词末尾<br>E :移动到单词末尾,如果有标点则移动到标点处<br>( :前移一句<br>) :后移一句<br>{ :前移一段<br>} :后移一段<br>0 :移动到行首<br>$ :移动到行尾<br>n| :移动到第n列<br>nG / ngg :移动到第n行<br>H :光标移动到屏幕顶端<br>M :光标移动到屏幕中间一行<br>L :光标移动到屏幕最底端一行</p>
+<font size="3"><strong>VIM翻屏指令</strong></font><br>ctrl+f :下翻一屏<br>ctrl+b :上翻一屏<br>ctrl+d :下翻半屏<br>ctrl+u :上翻半屏<br>ctrl+e :向下滚动一行<br>ctrl+y :向上滚动一行<br>n% :到文件n%的位置<br>zz :将当前行移动到屏幕中央<br>zt :将当前行移动到屏幕顶端<br>zb :将当前行移动到屏幕底端<br><br><br><font size="3"><strong>VIM分屏指令</strong></font>
+
+<p>:new (name)，新建一个未命名(文件名为name)的窗口件并分屏， 快捷键，Ctrl+W，然后马上按n键<br>:split (name) / 缩写:sp name 水平分屏，将当前屏分为两个，水平的。   Ctrl + w, s<br>:vsplit (name) / 缩写:vs name 垂直分屏，将当前屏分为两个，垂直的。  Ctrl + w, v<br>:only 取消分屏，取消当前的屏，当前屏指的是光标所在屏。</p>
+<p>关闭当前屏: Ctrl+w，c。</p>
+<p>切换窗口:<br>Ctrl + w, w 后一个<br>Ctrl + w, p 前一个</p>
+<p>Ctrl + w, h 四个方向<br>Ctrl + w, i<br>Ctrl + w, k<br>Ctrl + w, l</p>
+<p>关闭其他窗口:<br>Ctrl + w, o</p>
+<p>载入文件</p>
+<p>:vs  文件路径/文件名      在新的垂直分屏中打开文件</p>
+<p>:sv  文件路径/文件名      在新的水平分屏中打开文件</p>
+<font size="3"><strong>VIM字母转换</strong></font>
+
+<p>gu:字符转换小写<br>gU:字符转换大写<br>gul / gUl :将光标所在字符转换为小写/大写<br>guh / gUh :将光标左边字符转换为小写/大写</p>
+<font size="3"><strong>VIM复制粘贴</strong></font>
+
+<p>x :剪切右边字符<br>X :剪切左边字符<br>yy / Y :复制整行文本<br>:m,ny :复制m行到n行的文本<br>v :开始选择文本<br>V :选择当前行的文本<br>dd :删除当前行<br>D :删除光标后面的文本<br>p :在光标之后粘贴<br>P :在光标之前粘贴</p>
+<font size="3"><strong>VIM自带的补全</strong></font>
+
+<p>C-x C-v :补全vim选项和命令。<br>C-x C-l :整行补全。<br>C-x C-f :自动补全文件路径。弹出菜单后，按C-f循环选择，当然也可以按 C-n和C-p。<br>C-x C-p 和 C-x C-n :用文档中出现过的单词补全当前的词。 直接按C-p和C-n也可以。<br>C-x C-o :编程时可以补全关键字和函数名啊。<br>C-x C-i :根据头文件内关键字补全。<br>C-x C-d :补全宏定义。<br>C-x C-n :按缓冲区中出现过的关键字补全。 直接按C-n或C-p即可。</p>
+<font size="3"><strong>VIM插入模式</strong></font>
+
+<p>i :在光标处插入<br>I :在行首插入<br>a :在光标后面插入<br>A :在行尾插入<br>o :在下一行插入<br>O :在上一行插入<br>Esc :进入一般模式</p>
+<p><font size="3"><strong>VIM保存文件</strong></font><br>:w :保存文件但不退出vi<br>:w file :将修改另外保存到file中，不退出vi<br>:w! :强制保存，不退出vi<br>:wq :保存文件并退出vi<br>:wq! :强制保存文件，并退出vi<br>:q :不保存文件，退出vi<br>:q! :不保存文件，强制退出vi<br>:e! :放弃所有修改，从上次保存文件开始再编辑命令历史<br>ZZ :保存文件</p>
+<p><font size="3"><strong>VIM格式化代码</strong></font></p>
+<p><font size="2"><strong>格式化的核心是= + 位置</strong></font><br>gg=G :格式化整个文档<br>=G   :向下格式化所有行<br>n==  :向下格式化n行<br>n= + 方向: 朝某个方向格式化n行<br>==   :格式化当前行<br>={   :向上格式化代码块<br>=}   :向下格式化代码块<br>mg=ng:格式化m行到n行</p>
+<p><font size="3"><strong>vim插入内容</strong></font><br>:r 文件名 :将文件的内容插入到光标处<br>:r !命令 :将命令的结果插入到光标处<br>:! 命令 :只显示命令的结果不写入</p>
+<p><font size="3"><strong>vim自定义快捷键</strong></font><br>:map 快捷键 操作方式<esc> :快捷键使用Ctrl-v-某字母,使用Ctrl-某字母,可以调出命令<br>:ab 快捷字 想要写入的文字 :当编辑文本出现快捷字之后,按下回车或者空格,快捷字就会变成相要写入的文字</esc></p>
+<p>想要保存快捷键的话,需要在家目录下新建一个.vimrc文件,然后在里面写入map 快捷键 操作方式,<br>ab 快捷字 想要写入的文字,(这里不需要冒号),然后保存就可以了</p>
+<p><font size="3"><strong>vim宏录制</strong></font><br>qa进入宏录制，q退出，@a执行，n@a执行n次</p>
+<p>宏录制是一个非常强大的功能，可以执行相同的操作n次。<br>比如我有一个数字1，我按下qa，按下V选中1，按下y复制1，再按下p，1就被复制到下一行，然后按下Ctrl-a，将1变成2，最后按下q。我的宏就录制好了，首先输入1，然后在一般模式下输入100@a，就有从1到100个数字列出来了。</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a><a class="next" href="/2019/01/19/LearnVim/vimrc/">vim配置</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'GKMFyMScu4V4Os75j9SonSy3-gzGzoHsz',
+  appKey:'L4Wd5RclgNBPXtHG7m6n5dsB',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/python/learnPython/">python</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a><ul></ul><a href="https://pintia.cn/" title="pta" target="_blank">pta</a><ul></ul><a href="https://linux.cn/" title="Linux" target="_blank">Linux</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">梦之彼岸.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

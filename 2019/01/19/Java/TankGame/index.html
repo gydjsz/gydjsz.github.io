@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="这是一个神奇的世界"><title>坦克大战 | 梦之彼岸</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">坦克大战</h1><a id="logo" href="/.">梦之彼岸</a><p class="description">只有神知道的世界</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 主页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/message/"><i class="fa fa-rss"> 留言</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">坦克大战</h1><div class="post-meta">Jan 19, 2019</div><a class="disqus-comment-count" href="/2019/01/19/Java/TankGame/#vcomment"><span class="valine-comment-count" data-xid="/2019/01/19/Java/TankGame/"></span><span> Comment</span></a><div class="post-content"><h1 id="一、前言："><a href="#一、前言：" class="headerlink" title="一、前言："></a>一、前言：</h1><p>整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。</p>
+<h1 id="二、主体介绍"><a href="#二、主体介绍" class="headerlink" title="二、主体介绍"></a>二、主体介绍</h1><p>游戏结构主要有游戏面板、设置面板、菜单栏、坦克、子弹以及提升属性的物品</p>
+<h2 id="玩法规则"><a href="#玩法规则" class="headerlink" title="玩法规则"></a>玩法规则</h2><ol>
+<li>我方坦克将敌方坦克打完，就算获胜</li>
+<li>敌方坦克将我方坦克击败三次以及基地被摧毁，就算失败</li>
+<li>打掉草地以及击败敌方坦克均会掉落物品，捡到后能提升属性值</li>
+</ol>
+<h1 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h1><p><img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/start.png"><br>一、游戏面板</p>
+<ol>
+<li>游戏的开始面板将背景的图片，以及文字信息放了上去。这里由于出现了双缓冲技术，就在这里简单地说一下。</li>
+</ol>
+<h2 id="“双缓冲技术”的绘图过程如下"><a href="#“双缓冲技术”的绘图过程如下" class="headerlink" title="“双缓冲技术”的绘图过程如下"></a>“双缓冲技术”的绘图过程如下</h2><ol>
+<li><p>在内存中创建与画布一致的缓冲区</p>
+</li>
+<li><p>在缓冲区画图</p>
+</li>
+<li><p>将缓冲区位图拷贝到当前画布上</p>
+</li>
+<li><p>释放内存缓冲区</p>
+</li>
+</ol>
+<p>&emsp;双缓冲即在内存中创建一个与屏幕绘图区域一致的对象，先将图形绘制到内存中的这个对象上，再一次性将这个对象上的图形拷贝到屏幕上，这样能大大加快绘图的速度。</p>
+<p>版本一（重写update方法）：<br>重量级中repaint首先调用update方法，update然后再调用paint方法。再轻量级组件中直接调用paint。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Image offScreenImage = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Graphics g)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(offScreenImage == <span class="keyword">null</span>)</span><br><span class="line">        offScreenImage = <span class="keyword">this</span>.createImage(<span class="number">500</span>,<span class="number">500</span>);<span class="comment">//这是游戏窗口的宽度和高度</span></span><br><span class="line">     </span><br><span class="line">    Graphics gOff = offScreenImage.getGraphics();</span><br><span class="line">    paint(gOff);</span><br><span class="line">    g.drawImage(offScreenImage, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于JFrame是轻量级的，因而可以重写paint方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Image offScreenImage = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(Graphics g)</span> </span>&#123;     </span><br><span class="line">	<span class="comment">// 在重绘函数中实现双缓冲机制     </span></span><br><span class="line">	offScreenImage = <span class="keyword">this</span>.createImage(WIDTH, HEIGHT);     </span><br><span class="line">	<span class="comment">// 获得截取图片的画布     </span></span><br><span class="line">	gImage = offScreenImage.getGraphics();      </span><br><span class="line">	gImage.setColor(gImage.getColor());     </span><br><span class="line">	gImage.fillRect(<span class="number">0</span>, <span class="number">0</span>, WIDTH, HEIGHT); <span class="comment">// 填充缓冲   </span></span><br><span class="line">	<span class="keyword">super</span>.paint(gImage);     <span class="comment">//用gImage绘制图形, 代码根据具体情况</span></span><br><span class="line">	g.drawImage(offScreenImage, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">null</span>);    <span class="comment">//将缓冲图案绘制在屏幕上 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这中方式就比较容易理解，而且通用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化缓冲区</span></span><br><span class="line">BufferedImage imag = <span class="keyword">new</span> BufferedImage(Constent.width, Constent.height, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">Graphics g1 = imag.getGraphics();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">()</span></span>&#123;</span><br><span class="line">	g1.drawImage(x, y, width, height, <span class="keyword">null</span>);</span><br><span class="line">	g.drawImage(imag, x, y, width, height, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>里面有个设置鼠标指针样式一个代码，不过找的指针图片不太好看，就没加上，就先把方法留在里面了。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Image coursor = GameUtil.getImage(<span class="string">"TankImage/logo.jpg"</span>);  <span class="comment">//设置指针图片</span></span><br><span class="line"><span class="comment">//设置鼠标指针样式</span></span><br><span class="line">setCursor(Toolkit.getDefaultToolkit().createCustomCursor(coursor,<span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>), <span class="keyword">null</span>));</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>点击开始游戏和游戏设置的面板切换<br>这里使用了鼠标监听<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mousegCliked</span><span class="params">(MouseEvent e)</span></span>&#123;</span><br><span class="line">	e.getX();</span><br><span class="line">	e.getY();  <span class="comment">//获得鼠标的坐标</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>首先可以获得左上角和右下角的坐标位置，然后可以得到一个范围，只要是在这个范围内，都可以触发鼠标事件。</p>
+<p>这里需要注意的是，要将事件监听添加到JFrame中。<br>如果是点击开始游戏，那么触发事件后就可以将初始面板设置为不可见setVisible(false)，然后将它从JFrame中移除，再将新的面板添加进来，并设置其为可见。<br>然后如果是点击游戏设置，那么就直接将该面板设置为可见</p>
+<p>二、游戏设置窗口<br><img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/set.png"><br>里面使用几个组件：</p>
+<ol>
+<li>JLabel: 标签</li>
+<li>JRadioButton: 单选按钮</li>
+<li>JSLider: 滑块</li>
+<li>JTextField: 文本框</li>
+<li>JButton: 按钮</li>
+<li>JComboBox: 下拉菜单</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">jSlider = new JSlider(10, 100, initValue);  //设置起始点值，终点值，默认值</span><br><span class="line"></span><br><span class="line">jsl.setPaintTicks(true);       //设置滑块绘制刻度标记</span><br><span class="line">jsl.setMajorTickSpacing(10);  //设置主刻度标记的间隔</span><br><span class="line">jsl.setMinorTickSpacing(2);  //设置副刻度标记的间隔</span><br><span class="line"></span><br><span class="line">//这是修改坦克数量显示的事件处理</span><br><span class="line">jSlider.addChangeListener(new ChangeListener() &#123;</span><br><span class="line">	public void stateChanged(ChangeEvent e) &#123;</span><br><span class="line">		jTextField.setText(String.valueOf(jSlider.getValue()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">jTextField.setEditable(true);  //设置文本不可更改</span><br><span class="line"></span><br><span class="line">jDialog.setModalityType(ModalityType.APPLICATION_MODAL);  //设置该窗口打开后将其它窗口锁住</span><br></pre></td></tr></table></figure>
+<p>三、坦克大战的主面板<br><img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/fight.png"><br><img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/final.png"></p>
+<ol>
+<li>这个是游戏的主体，包含地图的绘制、显示所有坦克的移动和子弹发射的轨迹、物品掉落、游戏信息面板，坦克死亡、基地破坏的判定;</li>
+<li>由于所有的地图、坦克、子弹都已经放在了各自的ArrayList容器之中，所以在paint方法之中就只需遍历容器中的每一个值，然后将里面的内容绘制在屏幕上。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Tank&gt; tank;</span><br><span class="line">tank = <span class="keyword">new</span> ArrayList&lt;Tank&gt;;</span><br><span class="line">tank.add(tank1);  <span class="comment">//将坦克添加到容器中</span></span><br><span class="line">tank.add(tank2);</span><br><span class="line"></span><br><span class="line">Tank t = tank.get(i);  <span class="comment">//获得第i个坦克</span></span><br><span class="line">tank.remove(i);        <span class="comment">//移除第i个坦克</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>设置字体的颜色和样式<br>setFont(new Font(“楷体”, Font.BOLD, 60));    //楷体，粗体，60号<br>setColor(Color.BLACK);     //白色</p>
+</li>
+<li><p>记录游戏的时间<br>startTime = System.currentTimeMillis();<br>setEnd.endTime = System.currentTimeMillis();<br>setEnd.time = setEnd.endTime - setEnd.startTime;</p>
+</li>
+</ol>
+<p>四、菜单<br><img src="https://raw.githubusercontent.com/gydjsz/hexo/master/images/menu.png"><br>功能: 回到主面板、重新开始游戏、暂停游戏、恢复、退出游戏</p>
+<ol>
+<li><p>回到主面板<br>将游戏数据设置为结束的状态，然后将主面板设置为不可见，再移除坦克的键盘监听，新建一个主面板，再添加到JFrame中</p>
+</li>
+<li><p>重新开始游戏<br>将游戏数据设置为结束的状态，然后初始化主面板</p>
+</li>
+<li><p>暂停游戏<br>将所有的坦克和子弹，位置、方向不可改变，坦克不可键盘监听，这样线程还在运作，但是事实上所有的物体已经不能移动</p>
+</li>
+<li><p>恢复<br>就反过来，将一切复原</p>
+</li>
+<li><p>退出游戏<br>System.exit(0);</p>
+</li>
+</ol>
+<p>五、坦克设置</p>
+<ol>
+<li><p>坦克的属性有坐标、方向、速度、是否存活、生命值、攻击力等<br>这里速度可以直接设置坐标的改变量，然后也可以设置执行线程的时间，线程中有sleep()方法和坦克坐标移动的方法，避免由于线程执行太快而设置了线程暂停的时间，将时间缩短也可以提高速度</p>
+</li>
+<li><p>坦克的子弹使用了线程，当发射子弹后，就执行线程，线程中每隔一段时间将子弹的坐标改变，以此达到子弹自动运动的效果</p>
+</li>
+<li><p>在坦克的键盘监听之中，可以将按下的四个方向设置为boolean类型，如果直接按下方向键就进行移动，那么会有卡顿感，因为键盘监听是有延时的，当按下某一个方向的键时，就设置其为true，那么按下的过程中那个方向就一直为true，松开键时，将其设为false</p>
+</li>
+<li><p>坦克的碰撞检测:<br>碰撞检测的理论是：将两个物体看做矩形，矩形相交就判定为相碰。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rectangle r1 = <span class="keyword">new</span> Rectangle(x1, y1, width, height);</span><br><span class="line">Rectangle r2 = <span class="keyword">new</span> Rectangle(x2, y2, width, height);</span><br><span class="line">rl.intersects(r2);  <span class="comment">//相交为true，否则为false</span></span><br></pre></td></tr></table></figure>
+<p>如果加上位移会相交，那么就刚好到碰不到物体的地方，否则可以移动</p>
+<ol start="5">
+<li>坦克的移动使用的是随机数<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random random = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">int</span> n = random.nextInt(<span class="number">4</span>);   <span class="comment">//随机数[0,3)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>六、图片的插入<br>这里使用了GameUtil类，使用这个类比较容易添加图片，这个是网上找的，自己不太会写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameUtil</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 工具类最好将构造器私有化。</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">GameUtil</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Image <span class="title">getImage</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">		BufferedImage bi = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			URL u = GameUtil.class.getClassLoader().getResource(path);</span><br><span class="line">			bi = ImageIO.read(u);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> bi;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image image = GameUtil.getImage(路径);</span><br></pre></td></tr></table></figure></p>
+<p>最后附上我的源码: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:gydjsz/TankGame.git</p>
+</div><div class="tags"></div><div class="post-nav"><a class="pre" href="/2019/01/19/Java/dataType/">java基本数据类型</a><a class="next" href="/2019/01/19/GoodWebsiteCollection/">链接收藏</a></div><div id="vcomment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == true ? true : false;
+var verify = 'false' == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'GKMFyMScu4V4Os75j9SonSy3-gzGzoHsz',
+  appKey:'L4Wd5RclgNBPXtHG7m6n5dsB',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/01/19/python/learnPython/">python</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="https://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a><ul></ul><a href="https://pintia.cn/" title="pta" target="_blank">pta</a><ul></ul><a href="https://linux.cn/" title="Linux" target="_blank">Linux</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">梦之彼岸.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.2/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
