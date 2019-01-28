@@ -23,7 +23,7 @@ html, button, input, select, textarea,
     background-image: url(https://miao.su/images/2019/01/25/201710141825429ca07.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: 0%;
+    background-position: 0%, 0%;
     background-size: 100% 100%;
     display: block; }
   #footer a {
@@ -80,7 +80,7 @@ div {
       overflow: hidden; }
     #header .site-name #logo {
       font: bold 38px/1.12 "Times New Roman", Georgia, Times, sans-serif;
-      color: #292929; }
+      color: #000000; }
       #header .site-name #logo span, #header .site-name #logo:hover {
         color: #777; }
     #header .site-name .description {
@@ -176,7 +176,7 @@ div {
   padding: 25px 0 15px; }
   .post .post-title {
     margin: 0;
-    color: #303030;
+    color: #000000;
     text-align: left;
     font: bold 25px/1.1 "ff-tisa-web-pro", Cambria, "Times New Roman", Georgia, Times, sans-serif; }
     .post .post-title a {
@@ -343,7 +343,7 @@ div {
   padding: .8em 0 3.6em;
   margin-top: 1em;
   line-height: 2.5;
-  color: #6E7173;
+  color: #000000;
   text-align: center; }
   #footer span {
     font-size: .9em; }
@@ -599,8 +599,8 @@ pre {
   font-size: 12px; }
 
 #process .timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {
-  background: #fff;
-  color: #737881;
+  background: #000000;
+  color: #000000;
   display: block;
   width: 40px;
   height: 40px;
