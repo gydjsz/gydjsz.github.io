@@ -19,13 +19,11 @@ html, button, input, select, textarea,
 
 @media screen and (min-width: 1200px) {
   body {
-    content: "";
     background-image: url(https://miao.su/images/2019/01/25/201710141825429ca07.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0%, 0%;
-    background-size: 100% 100%;
-    display: block; }
+    background-size: 100%; }
   #footer a {
     color: #eee; } }
 
@@ -1472,7 +1470,6 @@ em.search-keyword {
   margin: 2em 0 0;
   padding: 0.5em 1em;
   border-left: 3px solid #FF1700;
-  background-color: #F9F9F9;
-  list-style: none; }
+  background-color: #F9F9F9; }
   .post-copyright li {
     margin: 8px 0; }
