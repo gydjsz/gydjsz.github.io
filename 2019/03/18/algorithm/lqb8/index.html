@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="gydjsz">
+
+
+
+<meta name="description" content="目录：  购物单 等差素数列 承压计算 方格分割 取数位 最大公共子串 日期问题 包子凑数 分巧克力 k倍区间">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第八届蓝桥杯真题解题报告">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/index.html">
+<meta property="og:site_name" content="梦之彼岸">
+<meta property="og:description" content="目录：  购物单 等差素数列 承压计算 方格分割 取数位 最大公共子串 日期问题 包子凑数 分巧克力 k倍区间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p1.png">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p2.png">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p3.png">
+<meta property="og:updated_time" content="2019-03-18T13:39:26.907Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第八届蓝桥杯真题解题报告">
+<meta name="twitter:description" content="目录：  购物单 等差素数列 承压计算 方格分割 取数位 最大公共子串 日期问题 包子凑数 分巧克力 k倍区间">
+<meta name="twitter:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p1.png">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="梦之彼岸" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../../../css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>第八届蓝桥杯真题解题报告 | 梦之彼岸</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gydjsz</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">只有神知道的世界</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="../../../../../index.html">主页</a></li>
+                        
+                            <li><a href="../../../../../archives/">所有文章</a></li>
+                        
+                            <li><a href="../../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gydjsz</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gydjsz</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">只有神知道的世界</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../../index.html">主页</a></li>
+                
+                    <li><a href="../../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-algorithm/lqb8" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="" class="article-date">
+      <time datetime="2019-03-18T13:39:26.947Z" itemprop="datePublished">2019-03-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第八届蓝桥杯真题解题报告
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><span id="0">目录：</span></p>
+<ol>
+<li><a href="#1">购物单</a></li>
+<li><a href="#2">等差素数列</a></li>
+<li><a href="#3">承压计算</a></li>
+<li><a href="#4">方格分割</a></li>
+<li><a href="#5">取数位</a></li>
+<li><a href="#6">最大公共子串</a></li>
+<li><a href="#7">日期问题</a></li>
+<li><a href="#8">包子凑数</a></li>
+<li><a href="#9">分巧克力</a></li>
+<li><a href="#10">k倍区间</a><a id="more"></a>
+</li>
+</ol>
+<p><a href="#0"><span id="1">1. 购物单</span></a></p>
+<p>小明刚刚找到工作，老板人很好，只是老板夫人很爱购物。老板忙的时候经常让小明帮忙到商场代为购物。小明很厌烦，但又不好推辞。</p>
+<pre><code>这不，XX大促销又来了！老板夫人开出了长长的购物单，都是有打折优惠的。
+小明也有个怪癖，不到万不得已，从不刷卡，直接现金搞定。
+现在小明很心烦，请你帮他计算一下，需要从取款机上取多少现金，才能搞定这次购物。
+
+取款机只能提供100元面额的纸币。小明想尽可能少取些现金，够用就行了。
+你的任务是计算出，小明最少需要取多少现金。
+</code></pre><p>以下是让人头疼的购物单，为了保护隐私，物品名称被隐藏了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">-----------------</span><br><span class="line">****     180.90       88折</span><br><span class="line">****      10.25       65折</span><br><span class="line">****      56.14        9折</span><br><span class="line">****     104.65        9折</span><br><span class="line">****     100.30       88折</span><br><span class="line">****     297.15        半价</span><br><span class="line">****      26.75       65折</span><br><span class="line">****     130.62        半价</span><br><span class="line">****     240.28       58折</span><br><span class="line">****     270.62        8折</span><br><span class="line">****     115.87       88折</span><br><span class="line">****     247.34       95折</span><br><span class="line">****      73.21        9折</span><br><span class="line">****     101.00        半价</span><br><span class="line">****      79.54        半价</span><br><span class="line">****     278.44        7折</span><br><span class="line">****     199.26        半价</span><br><span class="line">****      12.97        9折</span><br><span class="line">****     166.30       78折</span><br><span class="line">****     125.50       58折</span><br><span class="line">****      84.98        9折</span><br><span class="line">****     113.35       68折</span><br><span class="line">****     166.57        半价</span><br><span class="line">****      42.56        9折</span><br><span class="line">****      81.90       95折</span><br><span class="line">****     131.78        8折</span><br><span class="line">****     255.89       78折</span><br><span class="line">****     109.17        9折</span><br><span class="line">****     146.69       68折</span><br><span class="line">****     139.33       65折</span><br><span class="line">****     141.16       78折</span><br><span class="line">****     154.74        8折</span><br><span class="line">****      59.42        8折</span><br><span class="line">****      85.44       68折</span><br><span class="line">****     293.70       88折</span><br><span class="line">****     261.79       65折</span><br><span class="line">****      11.30       88折</span><br><span class="line">****     268.27       58折</span><br><span class="line">****     128.29       88折</span><br><span class="line">****     251.03        8折</span><br><span class="line">****     208.39       75折</span><br><span class="line">****     128.88       75折</span><br><span class="line">****      62.06        9折</span><br><span class="line">****     225.87       75折</span><br><span class="line">****      12.89       75折</span><br><span class="line">****      34.28       75折</span><br><span class="line">****      62.16       58折</span><br><span class="line">****     129.12        半价</span><br><span class="line">****     218.37        半价</span><br><span class="line">****     289.69        8折</span><br><span class="line">--------------------</span><br></pre></td></tr></table></figure></p>
+<p>需要说明的是，88折指的是按标价的88%计算，而8折是按80%计算，余者类推。<br>特别地，半价是按50%计算。<br>请提交小明要从取款机上提取的金额，单位是元。<br>答案是一个整数，类似4300的样子，结尾必然是00，不要填写任何多余的内容。</p>
+<p>特别提醒：不许携带计算器入场，也不能打开手机。</p>
+<p><strong>解：<br>思路：这题直接代码解决，先将数据处理一下，去除****和’折’字, 然后直接作为数据输入</strong></p>
+<p><a href="https://www.cnblogs.com/ljmzzyk/p/6918364.html" target="_blank" rel="noopener">Excel解决办法</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> value, sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> discount;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; value &amp;&amp; value != <span class="number">-1</span>)&#123;   <span class="comment">//输入-1结束</span></span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; discount;</span><br><span class="line">		<span class="keyword">if</span>(discount % <span class="number">10</span> == <span class="number">0</span>)    <span class="comment">//如果是8折、9折就换成80、90,便于后面计算</span></span><br><span class="line">			discount *= <span class="number">10</span>;</span><br><span class="line">		sum += value * discount / <span class="number">100</span>;  <span class="comment">//每一次折扣后的费用都加起来</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> a = sum / <span class="number">100</span>;   <span class="comment">//取出整百部分</span></span><br><span class="line">	<span class="keyword">if</span>(sum - a * <span class="number">100</span> &gt; <span class="number">0</span>)    <span class="comment">//如果费用不是整百，那么a + 1，表示将整百部分+1, 4301=&gt;4400</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; (a + <span class="number">1</span>) * <span class="number">100</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; a * <span class="number">100</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>答案：9700</strong></p>
+<hr>
+<p><a href="#0"><span id="2">2. 等差素数列</span></a></p>
+<p>2,3,5,7,11,13,….是素数序列。<br>类似：7,37,67,97,127,157 这样完全由素数组成的等差数列，叫等差素数数列。<br>上边的数列公差为30，长度为6。<br>2004年，格林与华人陶哲轩合作证明了：存在任意长度的素数等差数列。<br>这是数论领域一项惊人的成果！<br>有这一理论为基础，请你借助手中的计算机，满怀信心地搜索：<br>长度为10的等差素数列，其公差最小值是多少？<br>注意：需要提交的是一个整数，不要填写任何多余的内容和说明文字。</p>
+<p><strong>解：<br>思路：暴力枚举每一个素数，每次得到一个素数，就从1-1000循环公差, 如果在该公差下的十个数都是素数，那么最小值就是该公差</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">sushu</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;    <span class="comment">//求素数</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">sqrt</span>(n); i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n % i == <span class="number">0</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="number">100000</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(sushu(i))&#123;   <span class="comment">//如果该数是素数</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">2</span>; j &lt; <span class="number">1000</span>; j += <span class="number">2</span>)&#123;  <span class="comment">//素数的公差不可能为奇数，因为除2外的素数都是奇数，奇数+奇数=偶数</span></span><br><span class="line">				<span class="keyword">int</span> p;</span><br><span class="line">				<span class="keyword">for</span>(p = <span class="number">0</span>; p &lt; <span class="number">10</span>; p++)   <span class="comment">//在公差为j的情况下，遍历后面的10个数</span></span><br><span class="line">					<span class="keyword">if</span>(!sushu(i + j * p))   <span class="comment">//如果某一个不是素数，则跳出循环</span></span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">if</span>(p == <span class="number">10</span>)&#123;       <span class="comment">//10个数为素数，输出</span></span><br><span class="line">					<span class="built_in">cout</span> &lt;&lt; j &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>答案：210</strong></p>
+<hr>
+<p><a href="#0"><span id="3">3. 承压计算</span></a></p>
+<p>X星球的高科技实验室中整齐地堆放着某批珍贵金属原料。<br>每块金属原料的外形、尺寸完全一致，但重量不同。<br>金属材料被严格地堆放成金字塔形。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">                             7 </span><br><span class="line">                            5 8 </span><br><span class="line">                           7 8 8 </span><br><span class="line">                          9 2 7 2 </span><br><span class="line">                         8 1 4 9 1 </span><br><span class="line">                        8 1 8 8 4 1 </span><br><span class="line">                       7 9 6 1 4 5 4 </span><br><span class="line">                      5 6 5 5 6 9 5 6 </span><br><span class="line">                     5 5 4 7 9 3 5 5 1 </span><br><span class="line">                    7 5 7 9 7 4 7 3 3 1 </span><br><span class="line">                   4 6 4 5 5 8 8 3 2 4 3 </span><br><span class="line">                  1 1 3 3 1 6 6 5 5 4 4 2 </span><br><span class="line">                 9 9 9 2 1 9 1 9 2 9 5 7 9 </span><br><span class="line">                4 3 3 7 7 9 3 6 1 3 8 8 3 7 </span><br><span class="line">               3 6 8 1 5 3 9 5 8 3 8 1 8 3 3 </span><br><span class="line">              8 3 2 3 3 5 5 8 5 4 2 8 6 7 6 9 </span><br><span class="line">             8 1 8 1 8 4 6 2 2 1 7 9 4 2 3 3 4 </span><br><span class="line">            2 8 4 2 2 9 9 2 8 3 4 9 6 3 9 4 6 9 </span><br><span class="line">           7 9 7 4 9 7 6 6 2 8 9 4 1 8 1 7 2 1 6 </span><br><span class="line">          9 2 8 6 4 2 7 9 5 4 1 2 5 1 7 3 9 8 3 3 </span><br><span class="line">         5 2 1 6 7 9 3 2 8 9 5 5 6 6 6 2 1 8 7 9 9 </span><br><span class="line">        6 7 1 8 8 7 5 3 6 5 4 7 3 4 6 7 8 1 3 2 7 4 </span><br><span class="line">       2 2 6 3 5 3 4 9 2 4 5 7 6 6 3 2 7 2 4 8 5 5 4 </span><br><span class="line">      7 4 4 5 8 3 3 8 1 8 6 3 2 1 6 2 6 4 6 3 8 2 9 6 </span><br><span class="line">     1 2 4 1 3 3 5 3 4 9 6 3 8 6 5 9 1 5 3 2 6 8 8 5 3 </span><br><span class="line">    2 2 7 9 3 3 2 8 6 9 8 4 4 9 5 8 2 6 3 4 8 4 9 3 8 8 </span><br><span class="line">   7 7 7 9 7 5 2 7 9 2 5 1 9 2 6 5 3 9 3 5 7 3 5 4 2 8 9 </span><br><span class="line">  7 7 6 6 8 7 5 5 8 2 4 7 7 4 7 2 6 9 2 1 8 2 9 8 5 7 3 6 </span><br><span class="line"> 5 9 4 5 5 7 5 5 6 3 5 3 9 5 8 9 5 4 1 2 6 1 4 3 5 3 2 4 1 </span><br><span class="line">X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X</span><br></pre></td></tr></table></figure></p>
+<p>其中的数字代表金属块的重量（计量单位较大）。<br>最下一层的X代表30台极高精度的电子秤。</p>
+<p>假设每块原料的重量都十分精确地平均落在下方的两个金属块上，<br>最后，所有的金属块的重量都严格精确地平分落在最底层的电子秤上。<br>电子秤的计量单位很小，所以显示的数字很大。<br>工作人员发现，其中读数最小的电子秤的示数为：2086458231<br>请你推算出：读数最大的电子秤的示数为多少？<br>注意：需要提交的是一个整数，不要填写任何多余的内容。</p>
+<p><strong>解：<br>思路：上面一个数字平均分到它下面的两个数字上，直接用二维数组存下所有数字，然后每一行的数字等于当前的数字加上它上面两个数字的一半</strong><br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  1         1</span><br><span class="line"> 2 3    =&gt;  2 3 </span><br><span class="line">4 5 6       4 5 6</span><br></pre></td></tr></table></figure></p>
+<p><strong>当上面的重量落下来的时候，第二行的2就变为2 + 1 / 2 = 2.5, 第三行的4就变为4 + 2.5 / 2<br>一直算到最后一行，取出最大和最小的两个数，那么读数最大的示数应为MAX * 2086458231 / MIN</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> a[<span class="number">31</span>][<span class="number">31</span>];</span><br><span class="line">	<span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">29</span>; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= i; j++)</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; a[i][j];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">29</span>; i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= <span class="number">29</span>; j++)&#123;</span><br><span class="line">			a[i][j] += a[i - <span class="number">1</span>][j - <span class="number">1</span>] / <span class="number">2</span> + a[i - <span class="number">1</span>][j] / <span class="number">2</span>;   <span class="comment">//下面一个数=正上的左边一个数/2+正上面的数/2</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">double</span> MIN = <span class="number">9999999</span>, MAX = <span class="number">0</span>; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">30</span>; i++)&#123;</span><br><span class="line">		a[<span class="number">30</span>][i] = a[<span class="number">29</span>][i - <span class="number">1</span>] / <span class="number">2</span> + a[<span class="number">29</span>][i] / <span class="number">2</span>;   <span class="comment">//求出第30行的X的数字</span></span><br><span class="line">		MIN = min(MIN, a[<span class="number">30</span>][i]);    <span class="comment">//求出最小值</span></span><br><span class="line">		MAX = max(MAX, a[<span class="number">30</span>][i]);    <span class="comment">//求出最大值</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; fixed &lt;&lt; MAX * <span class="number">2086458231</span> / MIN &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">//fixed格式化输出，使其以小数形式输出</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>答案：72665192664</strong></p>
+<hr>
+<p><a href="#0"><span id="4">4. 方格分割</span></a></p>
+<p>6x6的方格，沿着格子的边线剪开成两部分。<br>要求这两部分的形状完全相同。</p>
+<p>如图：<img src="8/4/p1.png" alt=""> <img src="8/4/p2.png" alt=""> <img src="8/4/p3.png" alt=""> 就是可行的分割法。</p>
+<p>试计算：<br>包括这3种分法在内，一共有多少种不同的分割方法。<br>注意：旋转对称的属于同一种分割法。</p>
+<p>请提交该整数，不要填写任何多余的内容或说明文字。</p>
+<p><strong>解：<br>思路：由于剪开的两部分要完全相同，此时其一定关于中心对称，我们可以从(3, 3)开始出发，进行dfs遍历，由于dfs是连续找点的，所以找的格子一定是连在一起的，这就保证了可以分成两部分，在dfs遍历的时候同时对其对称的点作标记，这样旋转之后两部分就完全相同，因为旋转对称属于同一种，最终除以4，就是结果。</strong></p>
+<p>dfs讲解：<a href="https://www.cnblogs.com/OctoptusLian/p/7429645.html" target="_blank" rel="noopener">https://www.cnblogs.com/OctoptusLian/p/7429645.html</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">int</span> ans = <span class="number">0</span>;                    <span class="comment">//存储方式</span></span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[N + <span class="number">1</span>][N + <span class="number">1</span>];          <span class="comment">//存储走过的格子</span></span><br><span class="line"><span class="keyword">int</span> d[<span class="number">4</span>][<span class="number">2</span>] = &#123;                 <span class="comment">//定义行走方式</span></span><br><span class="line">	            <span class="number">0</span>, <span class="number">1</span>, </span><br><span class="line">            	<span class="number">1</span>, <span class="number">0</span>,</span><br><span class="line">             	<span class="number">0</span>, <span class="number">-1</span>,</span><br><span class="line">             	<span class="number">-1</span>, <span class="number">0</span></span><br><span class="line">               &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x == <span class="number">0</span> || y == <span class="number">0</span> || x == N || y == N)&#123;    <span class="comment">//到达边界返回</span></span><br><span class="line">		ans++;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> tx = x + d[i][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">int</span> ty = y + d[i][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">map</span>[tx][ty]) <span class="keyword">continue</span>;   <span class="comment">//如果已经走过，那么换一条路</span></span><br><span class="line">		<span class="built_in">map</span>[tx][ty] = <span class="number">1</span>;           <span class="comment">//没走过，标记1</span></span><br><span class="line">		<span class="built_in">map</span>[N - tx][N - ty] = <span class="number">1</span>;   <span class="comment">//对称的格子标记1</span></span><br><span class="line">		dfs(tx, ty);               <span class="comment">//dfs继续遍历</span></span><br><span class="line">		<span class="built_in">map</span>[tx][ty] = <span class="number">0</span>;           <span class="comment">//对路径进行还原</span></span><br><span class="line">		<span class="built_in">map</span>[N - tx][N - ty] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">map</span>[N / <span class="number">2</span>][N / <span class="number">2</span>] = <span class="number">1</span>;   <span class="comment">//先从(3, 3)点开始走，先标记为1</span></span><br><span class="line">	dfs(N / <span class="number">2</span>, N / <span class="number">2</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans / <span class="number">4</span> &lt;&lt; <span class="built_in">endl</span>;    <span class="comment">//除以重复的情况</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#0"><span id="5">5. 取数位</span></a></p>
+<p>求1个整数的第k位数字有很多种方法。<br>以下的方法就是一种。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 求x用10进制表示时的数位长度 </span><br><span class="line">int len(int x)&#123;</span><br><span class="line">	if(x&lt;10) return 1;</span><br><span class="line">	return len(x/10)+1;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">// 取x的第k位数字</span><br><span class="line">int f(int x, int k)&#123;</span><br><span class="line">	if(len(x)-k==0) return x%10;</span><br><span class="line">	return _____________________;  //填空</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	int x = 23574;</span><br><span class="line">	printf(&quot;%d\n&quot;, f(x,3));</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于题目中的测试数据，应该打印5。<br>请仔细分析源码，并补充划线部分所缺少的代码。<br>注意：只提交缺失的代码，不要填写任何已有内容或说明性的文字。</p>
+<p><strong>解：<br>思路：观察代码，len()函数明显是求x的长度，题目中23574的长度为5，f()函数就是求第k位数字，第一个if就是当x的长度和k相等时，返回x % 10, 如果x = 574, k = 3, 那么第k为数字就为x % 10 = 4，这里不满足if的话，就直接return了，可以看出，这是一个递归函数，将x的长度不断减小，最终只剩下k位，最终取模即可，空格处应该填f(x / 10, k)</strong></p>
+<p><strong>答案：f(x / 10, k)</strong></p>
+<hr>
+<p><a href="#0"><span id="6">6. 最大公共子串</span></a></p>
+<p>最大公共子串长度问题就是：<br>求两个串的所有子串中能够匹配上的最大长度是多少。<br>比如：”abcdkkk” 和 “baabcdadabc”，<br>可以找到的最长的公共子串是”abcd”,所以最大公共子串长度为4。<br>下面的程序是采用矩阵法进行求解的，这对串的规模不大的情况还是比较有效的解法。<br>请分析该解法的思路，并补全划线部分缺失的代码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 256</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s1, <span class="keyword">const</span> <span class="keyword">char</span>* s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[N][N];</span><br><span class="line">	<span class="keyword">int</span> len1 = <span class="built_in">strlen</span>(s1);</span><br><span class="line">	<span class="keyword">int</span> len2 = <span class="built_in">strlen</span>(s2);</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*N*N);</span><br><span class="line">	<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;=len1; i++)&#123;</span><br><span class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=len2; j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(s1[i<span class="number">-1</span>]==s2[j<span class="number">-1</span>]) &#123;</span><br><span class="line">				a[i][j] = __________________________;  <span class="comment">//填空</span></span><br><span class="line">				<span class="keyword">if</span>(a[i][j] &gt; max) max = a[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, f(<span class="string">"abcdkkk"</span>, <span class="string">"baabcdadabc"</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：只提交缺少的代码，不要提交已有的代码和符号。也不要提交说明性文字。</p>
+<p><strong>解：<br>思路：观察代码，两个循环+一个if，循环将s1中的每一个字母和s2中的每一个字母进行比较，s1中的第i个字符和s2中的字符相等，那么就将当前的这一次相等+它前面字符相等个数，由于每行都存储的是相等的字符个数，那么 它前面字符相等个数=a[i - 1][j - 1]</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a b c d k k k</span><br><span class="line">b a a b c d a d a b c</span><br><span class="line">第一次比较a：</span><br><span class="line">0 1 1 0 0 0 1 0 1 0 0</span><br><span class="line">第二次比较b：</span><br><span class="line">1 1 1 2 0 0 1 0 1 2 0</span><br><span class="line">第三次比较c：</span><br><span class="line">1 1 1 2 3 0 1 0 1 2 3</span><br><span class="line">第三次比较d：</span><br><span class="line">1 1 1 2 3 4 1 1 1 2 3</span><br><span class="line">然后比较k...</span><br></pre></td></tr></table></figure></p>
+<p><strong>答案：a[i][j] + a[i - 1][j - 1] + 1</strong></p>
+<hr>
+<p><a href="#0"><span id="7">7. 日期问题</span></a></p>
+<p>小明正在整理一批历史文献。这些历史文献中出现了很多日期。小明知道这些日期都在1960年1月1日至2059年12月31日。令小明头疼的是，这些日期采用的格式非常不统一，有采用年/月/日的，有采用月/日/年的，还有采用日/月/年的。更加麻烦的是，年份也都省略了前两位，使得文献上的一个日期，存在很多可能的日期与其对应。</p>
+<p>比如02/03/04，可能是2002年03月04日、2004年02月03日或2004年03月02日。</p>
+<p>给出一个文献上的日期，你能帮助小明判断有哪些可能的日期对其对应吗？</p>
+<p>输入<br>一个日期，格式是”AA/BB/CC”。  (0 &lt;= A, B, C &lt;= 9)</p>
+<p>输入<br>输出若干个不相同的日期，每个日期一行，格式是”yyyy-MM-dd”。多个日期按从早到晚排列。</p>
+<p>样例输入<br>02/03/04</p>
+<p>样例输出<br>2002-03-04<br>2004-02-03<br>2004-03-02</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+<p><strong>解：<br>思路：首先将输入的字符串转化为年月日的数字，然后用数组存储下题意中的三种排列，对每个情况进行判断，首先年份要在1960 ~ 2059之间，月份在1 ~ 12之间，天数在1 ~ 31之间，注意闰年的2月是29天，4,6,9,11是30天，输出的时候注意前导0，比如2要输出02，这里需要注意去重的问题，如果是输入02/02/02，那么输出为2002-02-02，但是这个情况对于三种排列都满足</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Day</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> year;</span><br><span class="line">	<span class="keyword">int</span> month;</span><br><span class="line">	<span class="keyword">int</span> day;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(year &lt; <span class="number">1960</span> || year &gt; <span class="number">2059</span> || month &gt;= <span class="number">13</span> || day &gt; <span class="number">31</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span> || year % <span class="number">400</span> == <span class="number">0</span>)&#123;  <span class="comment">//闰年的情况</span></span><br><span class="line">		<span class="keyword">if</span>(month == <span class="number">2</span> &amp;&amp; day &gt; <span class="number">29</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">switch</span>(month)&#123;   <span class="comment">//对于每一个月，天数不同的情况</span></span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="keyword">if</span>(day &gt; <span class="number">28</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">			<span class="keyword">if</span>(day &gt; <span class="number">30</span>)</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(Day a, Day b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a.year == b.year)&#123;   <span class="comment">//年份相等,则比较月份</span></span><br><span class="line">		<span class="keyword">if</span>(a.month == b.month)    <span class="comment">//月份相等，则比较天数</span></span><br><span class="line">			<span class="keyword">return</span> a.day &lt; b.day;</span><br><span class="line">		<span class="keyword">return</span> a.month &lt; b.month;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a.year &lt; b.year;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">string</span> s;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//提取出每个部分的数字</span></span><br><span class="line">	<span class="keyword">int</span> a = (s[<span class="number">0</span>] - <span class="string">'0'</span>) * <span class="number">10</span> + (s[<span class="number">1</span>] - <span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">int</span> b = (s[<span class="number">3</span>] - <span class="string">'0'</span>) * <span class="number">10</span> + (s[<span class="number">4</span>] - <span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">int</span> c = (s[<span class="number">6</span>] - <span class="string">'0'</span>) * <span class="number">10</span> + (s[<span class="number">7</span>] - <span class="string">'0'</span>);</span><br><span class="line">	<span class="keyword">int</span> m[][<span class="number">3</span>] = &#123;</span><br><span class="line">		a, b, c, </span><br><span class="line">		c, a, b,</span><br><span class="line">		c, b, a&#125;;   <span class="comment">//将三种情况存储在数组中</span></span><br><span class="line">	Day d[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> year = <span class="number">1900</span> + m[i][<span class="number">0</span>];   <span class="comment">//年份有19和20两种</span></span><br><span class="line">		<span class="keyword">int</span> month = m[i][<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">int</span> day = m[i][<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">if</span>(judge(year, month, day))&#123;   <span class="comment">//如果满足，则加入进来</span></span><br><span class="line">			d[k].year = year;</span><br><span class="line">			d[k].month = month;</span><br><span class="line">			d[k].day = day;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		year = <span class="number">2000</span> + m[i][<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">if</span>(judge(year, month, day))&#123;</span><br><span class="line">			d[k].year = year;</span><br><span class="line">			d[k].month = month;</span><br><span class="line">			d[k].day = day;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(d, d + k, cmp);   <span class="comment">//对日期进行排序</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">		<span class="comment">//去除和前一个日期重复的</span></span><br><span class="line">		<span class="keyword">if</span>(i != <span class="number">0</span> &amp;&amp; d[i].year == d[i - <span class="number">1</span>].year &amp;&amp; d[i].month == d[i - <span class="number">1</span>].month &amp;&amp; d[i].day == d[i - <span class="number">1</span>].day)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; d[i].year &lt;&lt; <span class="string">"-"</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; setw(<span class="number">2</span>) &lt;&lt; setfill(<span class="string">'0'</span>) &lt;&lt; d[i].month &lt;&lt; <span class="string">"-"</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; setw(<span class="number">2</span>) &lt;&lt; setfill(<span class="string">'0'</span>) &lt;&lt; d[i].day &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="#0"><span id="8">8. 包子凑数</span></a></p>
+<p>小明几乎每天早晨都会在一家包子铺吃早餐。他发现这家包子铺有N种蒸笼，其中第i种蒸笼恰好能放Ai个包子。每种蒸笼都有非常多笼，可以认为是无限笼。</p>
+<p>每当有顾客想买X个包子，卖包子的大叔就会迅速选出若干笼包子来，使得这若干笼中恰好一共有X个包子。比如一共有3种蒸笼，分别能放3、4和5个包子。当顾客想买11个包子时，大叔就会选2笼3个的再加1笼5个的（也可能选出1笼3个的再加2笼4个的）。</p>
+<p>当然有时包子大叔无论如何也凑不出顾客想买的数量。比如一共有3种蒸笼，分别能放4、5和6个包子。而顾客想买7个包子时，大叔就凑不出来了。</p>
+<p>小明想知道一共有多少种数目是包子大叔凑不出来的。</p>
+<p>输入<br>第一行包含一个整数N。(1 &lt;= N &lt;= 100)<br>以下N行每行包含一个整数Ai。(1 &lt;= Ai &lt;= 100)</p>
+<p>输出<br>一个整数代表答案。如果凑不出的数目有无限多个，输出INF。</p>
+<p>例如，<br>输入：<br>2<br>4<br>5</p>
+<p>程序应该输出：<br>6</p>
+<p>再例如，<br>输入：<br>2<br>4<br>6</p>
+<p>程序应该输出：<br>INF</p>
+<p>样例解释：<br>对于样例1，凑不出的数目包括：1, 2, 3, 6, 7, 11。<br>对于样例2，所有奇数都凑不出来，所以有无限多个。</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+<p><strong>解：<br>思路：由裴蜀定理知：a <em> x + b </em> y = gcd(a, b), 令c = gcd(a, b), 则a <em> x + b </em> y = c, 说明如果想让ａ和ｂ来表示ｃ，那么ｃ一定为ａ和ｂ的最大公约数的倍数。<br>这样就有一个结论：如果数据中含有两个数的最大公约数为１，那么就可以表示１的倍数，除了前面凑不出来的数<br>有两个数４,６, 最大公约数为２, 只能表示２的倍数的数字,不能表示奇数<br>首先标记能表示的数，然后遍历没有被标记的，就是不能表示的数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10001</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b == <span class="number">0</span> ? a : gcd(b, a % b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> a[N];</span><br><span class="line">	<span class="keyword">int</span> b[N];</span><br><span class="line">	<span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span>(b));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">		 <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> g = a[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">		g = gcd(g, a[i]);   <span class="comment">//如果有两个数a, b，gcd(a, b) = 1, 则g = 1, 那么gcd(g, x) = 1;</span></span><br><span class="line">	<span class="keyword">if</span>(g != <span class="number">1</span>)&#123;    <span class="comment">//如果最大公约数没有为１的，那么就有无限个数凑不出来</span></span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"INF"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		b[<span class="number">0</span>] = <span class="number">1</span>;   <span class="comment">//0个包子，就取0笼</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j + a[i] &lt; N; j++)</span><br><span class="line">				<span class="keyword">if</span>(b[j])    <span class="comment">//如果数字为ｊ的能凑，那么j + a[i]也能凑，即在ｊ的基础上+a[i]</span></span><br><span class="line">					b[j + a[i]] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)   <span class="comment">//遍历Ｎ，看那些没有标记</span></span><br><span class="line">		<span class="keyword">if</span>(!b[i])</span><br><span class="line">			sum++;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="#0"><span id="9">9. 分巧克力</span></a></p>
+<p>儿童节那天有K位小朋友到小明家做客。小明拿出了珍藏的巧克力招待小朋友们。<br>小明一共有N块巧克力，其中第i块是Hi x Wi的方格组成的长方形。</p>
+<p>为了公平起见，小明需要从这 N 块巧克力中切出K块巧克力分给小朋友们。切出的巧克力需要满足：</p>
+<p>1.形状是正方形，边长是整数<br>2.大小相同  </p>
+<p>例如一块6x5的巧克力可以切出6块2x2的巧克力或者2块3x3的巧克力。</p>
+<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小Hi计算出最大的边长是多少么？</p>
+<p>输入<br>第一行包含两个整数N和K。(1 &lt;= N, K &lt;= 100000)<br>以下N行每行包含两个整数Hi和Wi。(1 &lt;= Hi, Wi &lt;= 100000)<br>输入保证每位小朋友至少能获得一块1x1的巧克力。   </p>
+<p>输出<br>输出切出的正方形巧克力最大可能的边长。</p>
+<p>样例输入：<br>2 10<br>6 5<br>5 6  </p>
+<p>样例输出：<br>2</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 1000ms</p>
+<p><strong>解：<br>思路：这题采用二分法，首先找到最大的边长，作为二分操作中的right，对边长进行二分操作，即mid = (left + right) / 2，如果mid长度满足题意，那么继续增大mid，也就是让left = mid + 1.如何判断mid长度是否满足题意呢，循环遍历巧克力的边长，h / mid, w / mid 得到有多少mid长度的边，两者的乘积就是边长为mid的正方形的个数</strong><br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> __ __ __</span><br><span class="line">|        |   边长为3*3的矩形,假如mid = 2, 那么(3 / 2) * (3 / 2) = 1,可以形成一个2*2的正方形</span><br><span class="line">|        |   相当于在ｈ上有n = h / mid 个mid, ｗ上有m = w / mid个mid, 总共有n * m 个 mid*mid</span><br><span class="line">|__ __ __|</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">int</span> h[<span class="number">100000</span>], w[<span class="number">100000</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">		sum += (h[i] / b) * (w[i] / b);   <span class="comment">//求出满足边长为mid的正方形的个数</span></span><br><span class="line">		<span class="keyword">if</span>(sum &gt;= k)    <span class="comment">//如果已经达到ｋ个了，就返回</span></span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; h[i] &gt;&gt; w[i];</span><br><span class="line">		right = max(right, h[i]);	<span class="comment">//找出最大的那个边长</span></span><br><span class="line">		right = max(right, w[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;    <span class="comment">//不断二分边长，直到left &lt; right</span></span><br><span class="line">		<span class="keyword">if</span>(fun(mid))</span><br><span class="line">			left = mid + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			right = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; left &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">//输出边长</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="#0"><span id="10">10. k倍区间</span></a></p>
+<p>给定一个长度为N的数列，A1, A2, … AN，如果其中一段连续的子序列Ai, Ai+1, … Aj(i &lt;= j)之和是K的倍数，我们就称这个区间[i, j]是K倍区间。</p>
+<p>你能求出数列中总共有多少个K倍区间吗？</p>
+<p>输入<br>第一行包含两个整数N和K。(1 &lt;= N, K &lt;= 100000)<br>以下N行每行包含一个整数Ai。(1 &lt;= Ai &lt;= 100000)</p>
+<p>输出<br>输出一个整数，代表K倍区间的数目。</p>
+<p>例如，<br>输入：<br>5 2<br>1<br>2<br>3<br>4<br>5</p>
+<p>程序应该输出：<br>6</p>
+<p>资源约定：<br>峰值内存消耗（含虚拟机） &lt; 256M<br>CPU消耗  &lt; 2000ms</p>
+<p><strong>解：<br>思路：首先对数组进行前缀和a[i] + a[i - 1], 那么区间[l, r]的和为a[r] - a[l - 1], 如果(a[r] - a[l - 1]) % k == 0, 那么这个区间就是一个ｋ倍区间<br>(a[r] - a[l - 1]) % k == 0<br>=&gt; a[r] % k == a[l - 1] % k<br>可以看出如果区间两端点对ｋ的模相等，那么这个区间就是一个ｋ倍区间。我们可以在求前缀和的同时直接将这个对ｋ取模之后的数求出来，即a[r] % k, 只要有一个相等的情况我们就存储起来，这个数组记做b[],b数组的下标存储的就是a[r] % k, 对于进行了前缀和取模后的数组a, 只要将里面模数相等的个数全部存储在b数组中，那么对里面的端点进行两两组合，那么就可以得出这个区间[l, r], 组合数为C(n, 2) = n * (n - 1) / 2, 对于a[r] % k刚好为０的情况，只需要这一个端点就满足条件，所以要加上模数为０的总数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;   <span class="comment">//定义long long 避免爆数据</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">	ll a[<span class="number">100001</span>], b[<span class="number">100001</span>];</span><br><span class="line">	<span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span>(a));  <span class="comment">//初始化数组为０</span></span><br><span class="line">	<span class="built_in">memset</span>(b, <span class="number">0</span>, <span class="keyword">sizeof</span>(b));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">		a[i] = (a[i] + a[i - <span class="number">1</span>]) % k;   <span class="comment">//a[i] + a[i - 1]为前缀和，这里同时取模，即a[r] % k</span></span><br><span class="line">		b[a[i]]++;     <span class="comment">//a[r] % k的个数，满足a[r] % k == a[l - 1] % k的区间[l, r]为k倍区间</span></span><br><span class="line">	&#125;</span><br><span class="line">	ll sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(b[i])&#123;   <span class="comment">//如果含有点</span></span><br><span class="line">			sum += b[i] * (b[i] - <span class="number">1</span>) / <span class="number">2</span>;   <span class="comment">//组合求个数, 每两个点可以组成一个区间</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	sum +=  b[<span class="number">0</span>];   <span class="comment">//如果模数为0, 表明区间为[0, r], 加上本身的情况</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; sum &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="">第八届蓝桥杯真题解题报告</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
+        <p><span>发布时间:</span>2019-03-18, 21:39:26</p>
+        <p><span>最后更新:</span>2019-03-18, 21:39:26</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="第八届蓝桥杯真题解题报告">https://gydjsz.github.io/2019/03/18/algorithm/lqb8/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/algorithm/lqb8/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="../lqb7/">
+                    第七届蓝桥杯真题解题报告
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="../lqb7/" title="下一篇: 第七届蓝桥杯真题解题报告">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 gydjsz
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/poi.model.json"},"display":{"position":"right","width":160,"height":168},"mobile":{"show":true},"log":false});</script></body>
+</html>

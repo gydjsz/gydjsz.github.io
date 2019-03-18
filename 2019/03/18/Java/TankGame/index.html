@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="gydjsz">
+
+
+
+<meta name="description" content="一、前言：整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="坦克大战">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/Java/TankGame/index.html">
+<meta property="og:site_name" content="梦之彼岸">
+<meta property="og:description" content="一、前言：整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/4.jpg">
+<meta property="og:updated_time" content="2019-03-18T13:00:12.291Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="坦克大战">
+<meta name="twitter:description" content="一、前言：整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/1.jpg">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="梦之彼岸" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../../../css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>坦克大战 | 梦之彼岸</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gydjsz</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">只有神知道的世界</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="../../../../../index.html">主页</a></li>
+                        
+                            <li><a href="../../../../../archives/">所有文章</a></li>
+                        
+                            <li><a href="../../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gydjsz</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gydjsz</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">只有神知道的世界</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../../index.html">主页</a></li>
+                
+                    <li><a href="../../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-Java/TankGame" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="" class="article-date">
+      <time datetime="2019-03-18T13:00:12.331Z" itemprop="datePublished">2019-03-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      坦克大战
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="一、前言："><a href="#一、前言：" class="headerlink" title="一、前言："></a>一、前言：</h2><p>整个坦克大战游戏做的比较匆忙的，里面也有很多的bug，代码也写得比较乱，整理博客的时候也不太好整理，本想优化一下下，可是由于整个项目结构的缘故，只能到这一步了，这次算是有了很多的经验，相信下次再做的时候，应该会好得多。<br><a id="more"></a></p>
+<h2 id="二、主体介绍"><a href="#二、主体介绍" class="headerlink" title="二、主体介绍"></a>二、主体介绍</h2><p>游戏结构主要有游戏面板、设置面板、菜单栏、坦克、子弹以及提升属性的物品</p>
+<h3 id="玩法规则"><a href="#玩法规则" class="headerlink" title="玩法规则"></a>玩法规则</h3><ol>
+<li>我方坦克将敌方坦克打完，就算获胜</li>
+<li>敌方坦克将我方坦克击败三次以及基地被摧毁，就算失败</li>
+<li>打掉草地以及击败敌方坦克均会掉落物品，捡到后能提升属性值</li>
+</ol>
+<h2 id="三、代码实现"><a href="#三、代码实现" class="headerlink" title="三、代码实现"></a>三、代码实现</h2><p><img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/1.jpg" width="50%" height="50%"></p>
+<h3 id="游戏面板"><a href="#游戏面板" class="headerlink" title="游戏面板"></a>游戏面板</h3><ol>
+<li>游戏的开始面板将背景的图片，以及文字信息放了上去。这里由于出现了双缓冲技术，就在这里简单地说一下。</li>
+</ol>
+<h4 id="“双缓冲技术”的绘图过程如下"><a href="#“双缓冲技术”的绘图过程如下" class="headerlink" title="“双缓冲技术”的绘图过程如下"></a>“双缓冲技术”的绘图过程如下</h4><ol>
+<li><p>在内存中创建与画布一致的缓冲区</p>
+</li>
+<li><p>在缓冲区画图</p>
+</li>
+<li><p>将缓冲区位图拷贝到当前画布上</p>
+</li>
+<li><p>释放内存缓冲区</p>
+</li>
+</ol>
+<p>&emsp;双缓冲即在内存中创建一个与屏幕绘图区域一致的对象，先将图形绘制到内存中的这个对象上，再一次性将这个对象上的图形拷贝到屏幕上，这样能大大加快绘图的速度。</p>
+<p>版本一（重写update方法）：<br>重量级中repaint首先调用update方法，update然后再调用paint方法。再轻量级组件中直接调用paint。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Image offScreenImage = <span class="keyword">null</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Graphics g)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(offScreenImage == <span class="keyword">null</span>)</span><br><span class="line">        offScreenImage = <span class="keyword">this</span>.createImage(<span class="number">500</span>,<span class="number">500</span>);<span class="comment">//这是游戏窗口的宽度和高度</span></span><br><span class="line">     </span><br><span class="line">    Graphics gOff = offScreenImage.getGraphics();</span><br><span class="line">    paint(gOff);</span><br><span class="line">    g.drawImage(offScreenImage, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于JFrame是轻量级的，因而可以重写paint方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Image offScreenImage = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">(Graphics g)</span> </span>&#123;     </span><br><span class="line">	<span class="comment">// 在重绘函数中实现双缓冲机制     </span></span><br><span class="line">	offScreenImage = <span class="keyword">this</span>.createImage(WIDTH, HEIGHT);     </span><br><span class="line">	<span class="comment">// 获得截取图片的画布     </span></span><br><span class="line">	gImage = offScreenImage.getGraphics();      </span><br><span class="line">	gImage.setColor(gImage.getColor());     </span><br><span class="line">	gImage.fillRect(<span class="number">0</span>, <span class="number">0</span>, WIDTH, HEIGHT); <span class="comment">// 填充缓冲   </span></span><br><span class="line">	<span class="keyword">super</span>.paint(gImage);     <span class="comment">//用gImage绘制图形, 代码根据具体情况</span></span><br><span class="line">	g.drawImage(offScreenImage, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">null</span>);    <span class="comment">//将缓冲图案绘制在屏幕上 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这中方式就比较容易理解，而且通用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化缓冲区</span></span><br><span class="line">BufferedImage imag = <span class="keyword">new</span> BufferedImage(Constent.width, Constent.height, BufferedImage.TYPE_INT_RGB);</span><br><span class="line">Graphics g1 = imag.getGraphics();</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">paint</span><span class="params">()</span></span>&#123;</span><br><span class="line">	g1.drawImage(x, y, width, height, <span class="keyword">null</span>);</span><br><span class="line">	g.drawImage(imag, x, y, width, height, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>里面有个设置鼠标指针样式一个代码，不过找的指针图片不太好看，就没加上，就先把方法留在里面了。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Image coursor = GameUtil.getImage(<span class="string">"TankImage/logo.jpg"</span>);  <span class="comment">//设置指针图片</span></span><br><span class="line"><span class="comment">//设置鼠标指针样式</span></span><br><span class="line">setCursor(Toolkit.getDefaultToolkit().createCustomCursor(coursor,<span class="keyword">new</span> Point(<span class="number">0</span>, <span class="number">0</span>), <span class="keyword">null</span>));</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>点击开始游戏和游戏设置的面板切换<br>这里使用了鼠标监听<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mousegCliked</span><span class="params">(MouseEvent e)</span></span>&#123;</span><br><span class="line">	e.getX();</span><br><span class="line">	e.getY();  <span class="comment">//获得鼠标的坐标</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>首先可以获得左上角和右下角的坐标位置，然后可以得到一个范围，只要是在这个范围内，都可以触发鼠标事件。</p>
+<p>这里需要注意的是，要将事件监听添加到JFrame中。<br>如果是点击开始游戏，那么触发事件后就可以将初始面板设置为不可见setVisible(false)，然后将它从JFrame中移除，再将新的面板添加进来，并设置其为可见。<br>然后如果是点击游戏设置，那么就直接将该面板设置为可见</p>
+<h3 id="游戏设置窗口"><a href="#游戏设置窗口" class="headerlink" title="游戏设置窗口"></a>游戏设置窗口</h3><p><img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/2.jpg" width="50%" height="50%"></p>
+<p>里面使用几个组件：</p>
+<ol>
+<li>JLabel: 标签</li>
+<li>JRadioButton: 单选按钮</li>
+<li>JSLider: 滑块</li>
+<li>JTextField: 文本框</li>
+<li>JButton: 按钮</li>
+<li>JComboBox: 下拉菜单</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">jSlider = new JSlider(10, 100, initValue);  //设置起始点值，终点值，默认值</span><br><span class="line"></span><br><span class="line">jsl.setPaintTicks(true);       //设置滑块绘制刻度标记</span><br><span class="line">jsl.setMajorTickSpacing(10);  //设置主刻度标记的间隔</span><br><span class="line">jsl.setMinorTickSpacing(2);  //设置副刻度标记的间隔</span><br><span class="line"></span><br><span class="line">//这是修改坦克数量显示的事件处理</span><br><span class="line">jSlider.addChangeListener(new ChangeListener() &#123;</span><br><span class="line">	public void stateChanged(ChangeEvent e) &#123;</span><br><span class="line">		jTextField.setText(String.valueOf(jSlider.getValue()));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">jTextField.setEditable(true);  //设置文本不可更改</span><br><span class="line"></span><br><span class="line">jDialog.setModalityType(ModalityType.APPLICATION_MODAL);  //设置该窗口打开后将其它窗口锁住</span><br></pre></td></tr></table></figure>
+<h3 id="坦克大战的主面板"><a href="#坦克大战的主面板" class="headerlink" title="坦克大战的主面板"></a>坦克大战的主面板</h3><p><img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/3.jpg" width="50%" height="50%"><br><img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/5.jpg" width="50%" height="50%"></p>
+<ol>
+<li>这个是游戏的主体，包含地图的绘制、显示所有坦克的移动和子弹发射的轨迹、物品掉落、游戏信息面板，坦克死亡、基地破坏的判定;</li>
+<li>由于所有的地图、坦克、子弹都已经放在了各自的ArrayList容器之中，所以在paint方法之中就只需遍历容器中的每一个值，然后将里面的内容绘制在屏幕上。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;Tank&gt; tank;</span><br><span class="line">tank = <span class="keyword">new</span> ArrayList&lt;Tank&gt;;</span><br><span class="line">tank.add(tank1);  <span class="comment">//将坦克添加到容器中</span></span><br><span class="line">tank.add(tank2);</span><br><span class="line"></span><br><span class="line">Tank t = tank.get(i);  <span class="comment">//获得第i个坦克</span></span><br><span class="line">tank.remove(i);        <span class="comment">//移除第i个坦克</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>设置字体的颜色和样式<br>setFont(new Font(“楷体”, Font.BOLD, 60));    //楷体，粗体，60号<br>setColor(Color.BLACK);     //白色</p>
+</li>
+<li><p>记录游戏的时间<br>startTime = System.currentTimeMillis();<br>setEnd.endTime = System.currentTimeMillis();<br>setEnd.time = setEnd.endTime - setEnd.startTime;</p>
+</li>
+</ol>
+<h3 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h3><p><img src="https://raw.githubusercontent.com/gydjsz/TankGame/master/picture/4.jpg" width="50%" height="50%"></p>
+<p>功能: 回到主面板、重新开始游戏、暂停游戏、恢复、退出游戏</p>
+<ol>
+<li><p>回到主面板<br>将游戏数据设置为结束的状态，然后将主面板设置为不可见，再移除坦克的键盘监听，新建一个主面板，再添加到JFrame中</p>
+</li>
+<li><p>重新开始游戏<br>将游戏数据设置为结束的状态，然后初始化主面板</p>
+</li>
+<li><p>暂停游戏<br>将所有的坦克和子弹，位置、方向不可改变，坦克不可键盘监听，这样线程还在运作，但是事实上所有的物体已经不能移动</p>
+</li>
+<li><p>恢复<br>就反过来，将一切复原</p>
+</li>
+<li><p>退出游戏<br>System.exit(0);</p>
+</li>
+</ol>
+<h2 id="坦克设置"><a href="#坦克设置" class="headerlink" title="坦克设置"></a>坦克设置</h2><ol>
+<li><p>坦克的属性有坐标、方向、速度、是否存活、生命值、攻击力等<br>这里速度可以直接设置坐标的改变量，然后也可以设置执行线程的时间，线程中有sleep()方法和坦克坐标移动的方法，避免由于线程执行太快而设置了线程暂停的时间，将时间缩短也可以提高速度</p>
+</li>
+<li><p>坦克的子弹使用了线程，当发射子弹后，就执行线程，线程中每隔一段时间将子弹的坐标改变，以此达到子弹自动运动的效果</p>
+</li>
+<li><p>在坦克的键盘监听之中，可以将按下的四个方向设置为boolean类型，如果直接按下方向键就进行移动，那么会有卡顿感，因为键盘监听是有延时的，当按下某一个方向的键时，就设置其为true，那么按下的过程中那个方向就一直为true，松开键时，将其设为false</p>
+</li>
+<li><p>坦克的碰撞检测:<br>碰撞检测的理论是：将两个物体看做矩形，矩形相交就判定为相碰。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Rectangle r1 = <span class="keyword">new</span> Rectangle(x1, y1, width, height);</span><br><span class="line">Rectangle r2 = <span class="keyword">new</span> Rectangle(x2, y2, width, height);</span><br><span class="line">rl.intersects(r2);  <span class="comment">//相交为true，否则为false</span></span><br></pre></td></tr></table></figure>
+<p>如果加上位移会相交，那么就刚好到碰不到物体的地方，否则可以移动</p>
+<ol start="5">
+<li>坦克的移动使用的是随机数<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Random random = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">int</span> n = random.nextInt(<span class="number">4</span>);   <span class="comment">//随机数[0,3)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="图片的插入"><a href="#图片的插入" class="headerlink" title="图片的插入"></a>图片的插入</h2><p>这里使用了GameUtil类，使用这个类比较容易添加图片</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameUtil</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 工具类最好将构造器私有化。</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">GameUtil</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125; </span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Image <span class="title">getImage</span><span class="params">(String path)</span> </span>&#123;</span><br><span class="line">		BufferedImage bi = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			URL u = GameUtil.class.getClassLoader().getResource(path);</span><br><span class="line">			bi = ImageIO.read(u);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> bi;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image image = GameUtil.getImage(路径);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="">坦克大战</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
+        <p><span>发布时间:</span>2019-03-18, 21:00:12</p>
+        <p><span>最后更新:</span>2019-03-18, 21:00:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="坦克大战">https://gydjsz.github.io/2019/03/18/Java/TankGame/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/Java/TankGame/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="../../Interest/youdao/">
+                    linux终端下实现有道翻译
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="../javaString/">
+                    String类
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前言："><span class="toc-number">1.</span> <span class="toc-text">一、前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、主体介绍"><span class="toc-number">2.</span> <span class="toc-text">二、主体介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#玩法规则"><span class="toc-number">2.1.</span> <span class="toc-text">玩法规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、代码实现"><span class="toc-number">3.</span> <span class="toc-text">三、代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏面板"><span class="toc-number">3.1.</span> <span class="toc-text">游戏面板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#“双缓冲技术”的绘图过程如下"><span class="toc-number">3.1.1.</span> <span class="toc-text">“双缓冲技术”的绘图过程如下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游戏设置窗口"><span class="toc-number">3.2.</span> <span class="toc-text">游戏设置窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#坦克大战的主面板"><span class="toc-number">3.3.</span> <span class="toc-text">坦克大战的主面板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#菜单"><span class="toc-number">3.4.</span> <span class="toc-text">菜单</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#坦克设置"><span class="toc-number">4.</span> <span class="toc-text">坦克设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片的插入"><span class="toc-number">5.</span> <span class="toc-text">图片的插入</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="../../Interest/youdao/" title="上一篇: linux终端下实现有道翻译">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="../javaString/" title="下一篇: String类">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb8/">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 gydjsz
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/poi.model.json"},"display":{"position":"right","width":160,"height":168},"mobile":{"show":true},"log":false});</script></body>
+</html>

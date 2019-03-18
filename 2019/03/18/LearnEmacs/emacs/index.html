@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="gydjsz">
+
+
+
+<meta name="description" content="这个配置有点乱，但是先放这里">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="emacs配置">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/LearnEmacs/emacs/index.html">
+<meta property="og:site_name" content="梦之彼岸">
+<meta property="og:description" content="这个配置有点乱，但是先放这里">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-18T12:59:10.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="emacs配置">
+<meta name="twitter:description" content="这个配置有点乱，但是先放这里">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="梦之彼岸" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../../../css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>emacs配置 | 梦之彼岸</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gydjsz</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">只有神知道的世界</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="../../../../../index.html">主页</a></li>
+                        
+                            <li><a href="../../../../../archives/">所有文章</a></li>
+                        
+                            <li><a href="../../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gydjsz</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gydjsz</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">只有神知道的世界</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../../index.html">主页</a></li>
+                
+                    <li><a href="../../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-LearnEmacs/emacs" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="" class="article-date">
+      <time datetime="2019-03-18T12:59:10.651Z" itemprop="datePublished">2019-03-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      emacs配置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这个配置有点乱，但是先放这里<br><a id="more"></a><br>(require ‘package)<br>(package-initialize)<br>(add-to-list’package-archives ‘(“melpa” . “<a href="http://melpa.milkbox.net/packages/&quot;" target="_blank" rel="noopener">http://melpa.milkbox.net/packages/&quot;</a>) t)<br>(custom-set-variables<br> ;; custom-set-variables was added by Custom.<br> ;; If you edit it by hand, you could mess it up, so be careful.<br> ;; Your init file should contain only one such instance.<br> ;; If there is more than one, they won’t work right.<br> ‘(custom-safe-themes<br>   (quote<br>    (“8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4” “bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476” default)))<br> ‘(display-time-mode t)<br> ‘(package-archives<br>   (quote<br>    ((“gnu” . “<a href="http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/&quot;" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/&quot;</a>)<br>     (“melpa” . “<a href="http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/&quot;)))" target="_blank" rel="noopener">http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/&quot;)))</a>)<br> ‘(package-selected-packages<br>   (quote<br>    (emms emms-bilibili w3m eimp dracula-theme ecb yasnippet-snippets sr-speedbar auto-yasnippet yasnippet-classic-snippets yasnippet electric-spacing spacemacs-theme solarized-theme flymake-cppcheck flycheck-title flycheck-objc-clang flycheck-irony flycheck-color-mode-line flycheck auto-complete-c-headers auto-complete)))<br> ‘(show-paren-mode t))<br>(custom-set-faces<br> ;; custom-set-faces was added by Custom.<br> ;; If you edit it by hand, you could mess it up, so be careful.<br> ;; Your init file should contain only one such instance.<br> ;; If there is more than one, they won’t work right.<br> ‘(default ((t (:family “Ubuntu Mono” :foundry “DAMA” :slant normal :weight normal :height 158 :width normal)))))</p>
+<p>(global-auto-complete-mode t)</p>
+<p>;(global-linum-mode 1) ; always show line numbers<br>;(setq linum-format “%d)”)  ;set format<br>(global-linum-mode t)</p>
+<p>(global-flycheck-mode t)</p>
+<p>;;启用时间显示设置，在minibuffer上面的那个杠上<br>(display-time-mode 1)<br>;;时间使用24小时制<br>(setq display-time-24hr-format t)<br>;;时间显示包括日期和具体时间<br>;(setq display-time t)</p>
+<p>;; TAB键的宽度设置为4<br>(setq c-basic-offset 4)</p>
+<p>;(load-theme ‘spacemacs-dark t)  ;设置Spacemacs-dark主题</p>
+<p>(load-theme ‘dracula t)</p>
+<p>;(global-hl-line-mode 1)   ;设置行号</p>
+<p>;;让Emacs可以直接打开和显示图片。<br>(setq auto-image-file-mode t)</p>
+<p>(global-set-key (kbd “,”)   ;逗号后面自动添加空格</p>
+<pre><code>#&apos;(lambda ()
+    (interactive)
+    (insert &quot;, &quot;)))
+</code></pre><p>;; 以 y/n代表 yes/no<br>(fset ‘yes-or-no-p ‘y-or-n-p) </p>
+<p>;; 语法高亮<br>(global-font-lock-mode t)</p>
+<p>;; 显示括号匹配<br>(show-paren-mode t)<br>(setq show-paren-style ‘parentheses)</p>
+<p>;; 支持emacs和外部程序的粘贴<br>(setq x-select-enable-clipboard t)</p>
+<p>;; 在标题栏提示你目前在什么位置<br>(setq frame-title-format “zhj@%b”) </p>
+<p>;; 回车缩进<br>(global-set-key “\C-m” ‘newline-and-indent)<br>(global-set-key (kbd “C-<return>“) ‘newline)</return></p>
+<p>;(yas-global-mode 1) </p>
+<p>(add-to-list ‘load-path “~/.emacs.d/plugins/yasnippet”)<br>(require ‘yasnippet)<br>(setq yas/prompt-functions<br>   ‘(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))<br>(yas/global-mode 1)<br>(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用</p>
+<p>(require ‘auto-yasnippet)<br>(global-set-key (kbd “H-w”) #’aya-create)<br>(global-set-key (kbd “H-y”) #’aya-expand)   </p>
+<p>;(sr-speedbar-open)</p>
+<p>(auto-image-file-mode)</p>
+<p>;;关闭emacs启动时的画面<br>(setq inhibit-startup-message t)</p>
+<p>;; 改变 Emacs 固执的要你回答 yes 的行为。按 y 或空格键表示 yes，n 表示 no<br>(fset ‘yes-or-no-p ‘y-or-n-p)</p>
+<p>;;设置emacs GUI下的字体<br>(set-default-font “-bitstream-Courier 10 Pitch-normal-normal-normal-<em>-29-</em>-<em>-</em>-m-0-iso10646-1”)</p>
+<p>(add-to-list ‘load-path “/home/dal/.emacs.d/elpa/ecb-20170728.1221”)</p>
+<p>;;;; 各窗口间切换</p>
+<p>(global-set-key [M-left] ‘windmove-left)</p>
+<p>(global-set-key [M-right] ‘windmove-right)</p>
+<p>(global-set-key [M-up] ‘windmove-up)</p>
+<p>(global-set-key [M-down] ‘windmove-down)</p>
+<p>;; Disable buckets so that history buffer can display more entries<br>;(setq ecb-history-make-buckets ‘never)</p>
+<p>(defun set-image-mode-mwheel-scroll-function ()<br>  (setq-local mwheel-scroll-down-function ‘image-scroll-down)<br>  (setq-local mwheel-scroll-up-function ‘image-scroll-up))</p>
+<p>(add-hook ‘image-mode-hook #’set-image-mode-mwheel-scroll-function)</p>
+<p>;;emacs启动的时候自动全屏<br>(add-to-list ‘default-frame-alist ‘(fullscreen . maximized))</p>
+<p>;(require ‘sr-speedbar)</p>
+<p>//隐藏工具栏, 菜单栏, 滚动条<br>;(tool-bar-mode 0)<br>;(menu-bar-mode 0)<br>;(scroll-bar-mode 0) </p>
+<p>(global-auto-revert-mode t)</p>
+<p>;(add-hook ‘c-mode-common-hook ( lambda() ( c-set-style “k&amp;r” ) ) ) ;;设置C语言默认格式<br>(add-hook ‘c++-mode-common-hook ( lambda() ( c-set-style “k&amp;r” ) ) ) ;;设置C++语言默认格式</p>
+<p>;(global-set-key [(f8)] ‘loop-alpha)  ;;注意这行中的F8 , 可以改成你想要的按键    </p>
+<p>(setq alpha-list ‘((85 55) (100 100)))    </p>
+<p>(defun loop-alpha ()<br>  (interactive)<br>  (let ((h (car alpha-list)))<br>    ((lambda (a ab)<br>       (set-frame-parameter (selected-frame) ‘alpha (list a ab))<br>       (add-to-list ‘default-frame-alist (cons ‘alpha (list a ab)))<br>       ) (car h) (car (cdr h)))<br>    (setq alpha-list (cdr (append alpha-list (list h))))<br>    )<br>)    </p>
+<p>;打开emacs 之后 按F8 可以在透明 和不透明之间切换…   </p>
+<p>(setq is-alpha nil) </p>
+<p>(defun transform-window (a ab)<br>  (set-frame-parameter (selected-frame) ‘alpha (list a ab))<br>  (add-to-list ‘default-frame-alist (cons ‘alpha (list a ab)))<br>) </p>
+<p>(global-set-key [(f8)] (lambda()<br>                         (interactive)<br>                         (if is-alpha<br>                             (transform-window 100 100)<br>                           (transform-window 85 50))<br>                         (setq is-alpha (not is-alpha)))) </p>
+<p>;; Enable EDE (Project Management) features<br>(global-ede-mode 1)</p>
+<p>(custom-set-variables<br>‘(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-completions-mode<br>global-semantic-idle-scheduler-mode global-semanticdb-minor-mode<br>global-semantic-idle-summary-mode global-semantic-mru-bookmark-mode)))<br>‘(semantic-idle-scheduler-idle-time 3))</p>
+<p>(semantic-mode)</p>
+<p>;; smart complitions<br>(require ‘semantic/ia)<br>(setq-mode-local c-mode semanticdb-find-default-throttle<br>‘(project unloaded system recursive))<br>(setq-mode-local c++-mode semanticdb-find-default-throttle<br>‘(project unloaded system recursive))</p>
+<p>;;;; TAGS Menu<br>(defun my-semantic-hook ()<br>(imenu-add-to-menubar “TAGS”))</p>
+<p>(add-hook ‘semantic-init-hooks ‘my-semantic-hook)</p>
+<p>;;;; Semantic DataBase存储位置<br>(setq semanticdb-default-save-directory<br>(expand-file-name “~/.emacs.d/semanticdb”))</p>
+<p>;; 使用 gnu global 的TAGS。<br>(require ‘semantic/db-global)<br>(semanticdb-enable-gnu-global-databases ‘c-mode)<br>(semanticdb-enable-gnu-global-databases ‘c++-mode)</p>
+<p>;;;; 缩进或者补齐<br>;;; hippie-try-expand settings<br>(setq hippie-expand-try-functions-list<br>‘(<br>yas/hippie-try-expand<br>semantic-ia-complete-symbol<br>try-expand-dabbrev<br>try-expand-dabbrev-visible<br>try-expand-dabbrev-all-buffers<br>try-expand-dabbrev-from-kill<br>try-complete-file-name-partially<br>try-complete-file-name<br>try-expand-all-abbrevs))</p>
+<p>(defun indent-or-complete ()<br>“Complete if point is at end of a word, otherwise indent line.”<br>(interactive)<br>(if (looking-at “\&gt;”)<br>(hippie-expand nil)<br>(indent-for-tab-command)<br>))</p>
+<p>(defun yyc/indent-key-setup ()<br>;”Set tab as key for indent-or-complete”<br>(local-set-key [(tab)] ‘indent-or-complete)<br>)</p>
+<p>(require ‘cedet)</p>
+<p>(semantic-mode 1)</p>
+<p>(global-ede-mode 1)</p>
+<p>(global-set-key (kbd “<f5>“) ‘sr-speedbar-toggle) ;;sr-speedbar按键绑定</f5></p>
+<p>;;;; 自动启动ecb，并且不显示每日提示</p>
+<p>(setq ecb-auto-activate t</p>
+<pre><code>ecb-tip-of-the-day nil)
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="">emacs配置</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
+        <p><span>发布时间:</span>2019-03-18, 20:59:10</p>
+        <p><span>最后更新:</span>2019-03-18, 20:59:10</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="emacs配置">https://gydjsz.github.io/2019/03/18/LearnEmacs/emacs/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/LearnEmacs/emacs/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="../GoodShortCutkey/">
+                    学习新的emacs快捷键
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="../addPlug/">
+                    为emacs添加源
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="../GoodShortCutkey/" title="上一篇: 学习新的emacs快捷键">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="../addPlug/" title="下一篇: 为emacs添加源">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb8/">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 gydjsz
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/poi.model.json"},"display":{"position":"right","width":160,"height":168},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="gydjsz">
+
+
+
+<meta name="description" content="大小写转换12345name = &quot;hello, world&quot;name = name.title()   #将单词首字母大写print(name)           #输出Hello, Worldprint(name.upper())   #输出HELLO, WORLd   (将字符串中的所有字母转化为大写)print(name.lower())   #输出hello, world   (将字符">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/python/learnPython/index.html">
+<meta property="og:site_name" content="梦之彼岸">
+<meta property="og:description" content="大小写转换12345name = &quot;hello, world&quot;name = name.title()   #将单词首字母大写print(name)           #输出Hello, Worldprint(name.upper())   #输出HELLO, WORLd   (将字符串中的所有字母转化为大写)print(name.lower())   #输出hello, world   (将字符">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-18T12:57:12.272Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python">
+<meta name="twitter:description" content="大小写转换12345name = &quot;hello, world&quot;name = name.title()   #将单词首字母大写print(name)           #输出Hello, Worldprint(name.upper())   #输出HELLO, WORLd   (将字符串中的所有字母转化为大写)print(name.lower())   #输出hello, world   (将字符">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="梦之彼岸" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../../../../css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>python | 梦之彼岸</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">gydjsz</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">只有神知道的世界</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true">
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class="no-result">No results found <i class="fa fa-spinner fa-pulse"></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="../../../../../index.html">主页</a></li>
+                        
+                            <li><a href="../../../../../archives/">所有文章</a></li>
+                        
+                            <li><a href="../../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">gydjsz</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">gydjsz</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">只有神知道的世界</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../../index.html">主页</a></li>
+                
+                    <li><a href="../../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="../../../../../atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-python/learnPython" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="" class="article-date">
+      <time datetime="2019-03-18T12:57:12.304Z" itemprop="datePublished">2019-03-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>大小写转换</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"hello, world"</span></span><br><span class="line">name = name.title()   <span class="comment">#将单词首字母大写</span></span><br><span class="line">print(name)           <span class="comment">#输出Hello, World</span></span><br><span class="line">print(name.upper())   <span class="comment">#输出HELLO, WORLd   (将字符串中的所有字母转化为大写)</span></span><br><span class="line">print(name.lower())   <span class="comment">#输出hello, world   (将字符串中的所有字母转化为小写)</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><strong>注释</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">单行: <span class="comment">#</span></span><br><span class="line"></span><br><span class="line">多行: <span class="string">''' 注释'''</span> 或者  <span class="string">""" 注释 """</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>删除末尾的空格</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">favorite_language = <span class="string">'python '</span></span><br><span class="line">favorite_language.rstrip()   <span class="comment">#删除末尾的空格</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>将非字符串转化为字符串</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str(n)  <span class="comment">#将非字符串转化为字符串</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>列表</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">list = []   <span class="comment">#创建一个空列表</span></span><br><span class="line">list.append(<span class="string">'abc'</span>)    <span class="comment">#在列表末尾添加元素</span></span><br><span class="line">list.insert(<span class="number">0</span>, <span class="string">'abc'</span>)    <span class="comment">#在列表的0位置处添加一个元素</span></span><br><span class="line"><span class="keyword">del</span> list[<span class="number">1</span>]    <span class="comment">#删除列表中1位置的元素</span></span><br><span class="line">x = list.pop()    <span class="comment">#弹出栈顶元素</span></span><br><span class="line">list.remove(<span class="string">'abc'</span>)   <span class="comment">#移除第一个出现的元素abc</span></span><br><span class="line">list.sort()    <span class="comment">#按字母顺序从小到大</span></span><br><span class="line">list.sort(reverse=<span class="keyword">True</span>)   <span class="comment">#按与字母顺序相反的顺序排列</span></span><br><span class="line">sorted(list)     <span class="comment">#字母顺序显示列表，不影响列表内部排序</span></span><br><span class="line">sorted(list, reverse=<span class="keyword">True</span>) <span class="comment">#逆字母顺序显示列表，不影响列表内部排序</span></span><br><span class="line">list.reverse()     <span class="comment">#反转列表中的元素</span></span><br><span class="line">len(list)    <span class="comment">#获取列表长度</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>print输出的格式</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入不换行:</span><br><span class="line">print(<span class="number">2233</span>, end = <span class="string">''</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>产生数字列表</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">生成数字列表:</span><br><span class="line">numbers = list(range(<span class="number">5</span>))   <span class="comment">#range产生[0, 5)的整数</span></span><br></pre></td></tr></table></figure></p>
+<p>** #表示乘方运算</p>
+<p><strong>最小值、最大值及总和</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">numbers = list(range(<span class="number">10</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#数字列表中的最小值,最大值以及总和</span></span><br><span class="line">min(numbers)    </span><br><span class="line">max(numbers)</span><br><span class="line">sum(numbers)</span><br></pre></td></tr></table></figure></p>
+<p><strong>列表解析</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">range(start, stop, step)    <span class="comment">#从start开始，以stop - 1结束步长为step的整数</span></span><br><span class="line">list = [value <span class="keyword">for</span> value <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">21</span>, <span class="number">2</span>)]   <span class="comment">#1~20以内的奇数.列表解析: 表达式(value) + 循环(for...))</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>切片</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">players = [<span class="string">'charles'</span>, <span class="string">'martina'</span>, <span class="string">'michael'</span>, <span class="string">'florence'</span>, <span class="string">'eli'</span>]</span><br><span class="line">print(players[<span class="number">0</span> : <span class="number">3</span>])    <span class="comment">#输出列表中的0~2号元素</span></span><br><span class="line">print(players[:<span class="number">4</span>])       <span class="comment">#省略第一个索引，默认为从头开始</span></span><br><span class="line">print(players[<span class="number">2</span>:])       <span class="comment">#省略第二个索引，默认为从索引2开始到末尾</span></span><br><span class="line">print(players[<span class="number">-3</span>:])      <span class="comment">#从倒数第三个索引开始到末尾所有元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历切片</span></span><br><span class="line"><span class="keyword">for</span> player <span class="keyword">in</span> players[:<span class="number">3</span>]:</span><br><span class="line">	print(player)</span><br><span class="line"></span><br><span class="line"><span class="comment">#复制列表</span></span><br><span class="line">other_players = players[:]</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果是下面这样, 并不能复制列表</span></span><br><span class="line">other_players = players     <span class="comment">#将other_players关联到players，other_players内容改变对players有效</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>元组</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dimensions = (<span class="number">200</span>, <span class="number">50</span>)    <span class="comment">#使用括号来标识, 元组内的值不能更改,但是可以重新定义</span></span><br><span class="line">dimensions = (<span class="number">400</span>, <span class="number">100</span>)</span><br><span class="line"><span class="keyword">for</span> dimension <span class="keyword">in</span> dimensions:</span><br><span class="line">	print(dimension)</span><br></pre></td></tr></table></figure></p>
+<p><strong>判断特定值是否在列表中</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">print(<span class="number">3</span> <span class="keyword">in</span> numbers)         //<span class="keyword">True</span></span><br><span class="line">print(<span class="number">56</span> <span class="keyword">not</span> <span class="keyword">in</span> numbers)   //<span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>遍历键值对</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tom = &#123;<span class="string">'name'</span>: <span class="string">'tom'</span>, <span class="string">'age'</span>: <span class="number">34</span>, <span class="string">'heigh'</span>: <span class="number">150</span>, <span class="string">'weight'</span>: <span class="number">40</span>&#125;</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> tom.items():</span><br><span class="line">	print(k + <span class="string">":"</span>, end = <span class="string">' '</span>)</span><br><span class="line">	print(v)</span><br></pre></td></tr></table></figure></p>
+<p><strong>遍历字典</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">favorite_language = &#123;</span><br><span class="line">	<span class="string">'jen'</span>: <span class="string">'python'</span>,</span><br><span class="line">	<span class="string">'sarah'</span>: <span class="string">'c'</span>,</span><br><span class="line">	<span class="string">'edward'</span>: <span class="string">'ruby'</span>,</span><br><span class="line">	<span class="string">'phil'</span>: <span class="string">'python'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> key <span class="keyword">in</span> favorite_language.keys():    <span class="comment">#遍历键</span></span><br><span class="line">	print(key)</span><br><span class="line"><span class="keyword">for</span> name <span class="keyword">in</span> favorite_language.values():  <span class="comment">#遍历值</span></span><br><span class="line">	print(name)</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> favorite_language.items():</span><br><span class="line">	print(k + <span class="string">" "</span> v)</span><br></pre></td></tr></table></figure></p>
+<p><strong>嵌套</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#字典列表</span></span><br><span class="line">alien_0 = &#123;<span class="string">'color'</span>: <span class="string">'green'</span>, <span class="string">'points'</span>: <span class="number">5</span>&#125;</span><br><span class="line">alien_1 = &#123;<span class="string">'color'</span>: <span class="string">'yellow'</span>, <span class="string">'points'</span>: <span class="number">10</span>&#125;</span><br><span class="line">alien_2 = &#123;<span class="string">'color'</span>: <span class="string">'red'</span>, <span class="string">'points'</span>: <span class="number">15</span>&#125;</span><br><span class="line"></span><br><span class="line">aliens = [alien_0, alien_1, alien_2]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> alien <span class="keyword">in</span> aliens:</span><br><span class="line">	print(alien)</span><br><span class="line"></span><br><span class="line"><span class="comment">#字典中储存列表</span></span><br><span class="line">pizza = &#123;</span><br><span class="line">	<span class="string">'crust'</span>: <span class="string">'thick'</span>,</span><br><span class="line">	<span class="string">'toppings'</span>: [<span class="string">'mushrooms'</span>, <span class="string">'extra cheese'</span>],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="">python</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
+        <p><span>发布时间:</span>2019-03-18, 20:57:12</p>
+        <p><span>最后更新:</span>2019-03-18, 20:57:12</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="python">https://gydjsz.github.io/2019/03/18/python/learnPython/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/python/learnPython/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="../../matlabLearn/matlab/">
+                    matlab学习
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="../../SQL/useSqlServer/">
+                    数据库使用笔记
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="../../matlabLearn/matlab/" title="上一篇: matlab学习">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="../../SQL/useSqlServer/" title="下一篇: 数据库使用笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb8/">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 gydjsz
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/poi.model.json"},"display":{"position":"right","width":160,"height":168},"mobile":{"show":true},"log":false});</script></body>
+</html>
