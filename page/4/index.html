@@ -271,10 +271,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-LearnEmacs/TurnCharacter" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Linux/Install_Ntfs-3g" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="../../2019/01/19/LearnEmacs/TurnCharacter/" class="article-date">
+      <a href="../../2019/01/19/Linux/Install_Ntfs-3g/" class="article-date">
       <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
 </a>
 
@@ -290,7 +290,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a>
+      <a class="article-title" href="../../2019/01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a>
     </h1>
   
 
@@ -300,7 +300,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>emacs安装之后在终端里面打开的是图形版，要想在shell里面直接打开就在~/.bashrc里面添加alias emacs=’emacs -nw’<br>注意等号两边没有空格</p>
+        <ol>
+<li><p>加源<br>wget -O /etc/yum.repos.d/epel.repo <a href="http://mirrors.aliyun.com/repo/epel-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/epel-7.repo</a></p>
+</li>
+<li><p>安装<br>yum update;yum install ntfs-3g<br>yum install ntfs-3g</p>
+</li>
+</ol>
 
       
     </div>
@@ -383,10 +388,10 @@
 
 
   
-    <article id="post-Linux/setRoot" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-anacondaStart" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="../../2019/01/19/Linux/setRoot/" class="article-date">
+      <a href="../../2019/01/19/anacondaStart/" class="article-date">
       <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
 </a>
 
@@ -402,7 +407,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/Linux/setRoot/">设置root密码</a>
+      <a class="article-title" href="../../2019/01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a>
     </h1>
   
 
@@ -412,7 +417,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Ubuntu下 su:出现： authentication failure的解决办法<br>执行：sudo passwd root</p>
+        <p>在终端下输入anaconda-navigator</p>
 
       
     </div>
@@ -560,10 +565,10 @@
 
 
   
-    <article id="post-Linux/xselOperation" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-LearnEmacs/TurnCharacter" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="../../2019/01/19/Linux/xselOperation/" class="article-date">
+      <a href="../../2019/01/19/LearnEmacs/TurnCharacter/" class="article-date">
       <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
 </a>
 
@@ -579,7 +584,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/Linux/xselOperation/">How to operate xsel in Linux?</a>
+      <a class="article-title" href="../../2019/01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a>
     </h1>
   
 
@@ -589,14 +594,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <ol>
-<li><p>first download xsel in Linux by using this command: sudo apt-get install xsel<br>or<br>download the xsel(the link is in my other blog–Link Collection)<br>modify the ~/.bashrc by vim or emacs<br>For example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">in the last line add: export PATH=&apos;~/XselDirectory/&apos;</span><br><span class="line">source ~/.bashrc //make the operation effective</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Some operation<br>xsel &lt; file //read file content to xsel<br>xsel &gt; file //write xsel content to xsel<br>xsel  // show xsel content<br>cat file | xsel -b -i  //file to xsel<br>cat file | xsel -b -a  //add file content to xsel last line </p>
-</li>
-</ol>
-<p>more content can read README in XselDirectory</p>
+        <p>emacs安装之后在终端里面打开的是图形版，要想在shell里面直接打开就在~/.bashrc里面添加alias emacs=’emacs -nw’<br>注意等号两边没有空格</p>
 
       
     </div>
@@ -747,10 +745,10 @@
 
 
   
-    <article id="post-Linux/CutPathName" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Linux/setRoot" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="../../2019/01/19/Linux/CutPathName/" class="article-date">
+      <a href="../../2019/01/19/Linux/setRoot/" class="article-date">
       <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
 </a>
 
@@ -766,7 +764,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/Linux/CutPathName/">缩略linux路径</a>
+      <a class="article-title" href="../../2019/01/19/Linux/setRoot/">设置root密码</a>
     </h1>
   
 
@@ -776,11 +774,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>emacs ~/.bashrc  将</p>
-<p>if [ “$colovr prompt” = yes ]; then</p>
-<p>  PS1=’${debian chroot:+($debian chroot)}[\033[01;32m]\u@\h[\033[00m]:[\033[01;34m]\w[\033[00m]\$ ‘<br>else</p>
-<p>  PS1=’${debian chroot:+($debian chroot)}\u@\h:\w\$ ‘</p>
-<p>里面的小写w改为大写的W就可以缩略路径名，避免进入的目录多了之后导致路径名太长，可以使用pwd来查看全目录</p>
+        <p>Ubuntu下 su:出现： authentication failure的解决办法<br>执行：sudo passwd root</p>
 
       
     </div>
