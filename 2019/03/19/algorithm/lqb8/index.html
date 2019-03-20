@@ -19,18 +19,18 @@
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第八届蓝桥杯真题解题报告">
-<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/index.html">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/19/algorithm/lqb8/index.html">
 <meta property="og:site_name" content="梦之彼岸">
 <meta property="og:description" content="目录：  购物单 等差素数列 承压计算 方格分割 取数位 最大公共子串 日期问题 包子凑数 分巧克力 k倍区间">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p1.png">
-<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p2.png">
-<meta property="og:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p3.png">
-<meta property="og:updated_time" content="2019-03-18T13:39:26.907Z">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/19/algorithm/lqb8/p1">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/19/algorithm/lqb8/p2">
+<meta property="og:image" content="https://gydjsz.github.io/2019/03/19/algorithm/lqb8/p3">
+<meta property="og:updated_time" content="2019-03-19T11:18:06.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第八届蓝桥杯真题解题报告">
 <meta name="twitter:description" content="目录：  购物单 等差素数列 承压计算 方格分割 取数位 最大公共子串 日期问题 包子凑数 分巧克力 k倍区间">
-<meta name="twitter:image" content="https://gydjsz.github.io/2019/03/18/algorithm/lqb8/8/4/p1.png">
+<meta name="twitter:image" content="https://gydjsz.github.io/2019/03/19/algorithm/lqb8/p1">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -273,7 +273,7 @@
   
     <div class="article-meta">
       <a href="" class="article-date">
-      <time datetime="2019-03-18T13:39:26.947Z" itemprop="datePublished">2019-03-18</time>
+      <time datetime="2019-03-19T11:18:06.553Z" itemprop="datePublished">2019-03-19</time>
 </a>
 
 
@@ -352,7 +352,7 @@
 <hr>
 <p><a href="#0"><span id="4">4. 方格分割</span></a></p>
 <p>6x6的方格，沿着格子的边线剪开成两部分。<br>要求这两部分的形状完全相同。</p>
-<p>如图：<img src="8/4/p1.png" alt=""> <img src="8/4/p2.png" alt=""> <img src="8/4/p3.png" alt=""> 就是可行的分割法。</p>
+<p>如图：<img src="p1" alt="1"> <img src="p2" alt="2"> <img src="p3" alt="3"> 就是可行的分割法。</p>
 <p>试计算：<br>包括这3种分法在内，一共有多少种不同的分割方法。<br>注意：旋转对称的属于同一种分割法。</p>
 <p>请提交该整数，不要填写任何多余的内容或说明文字。</p>
 <p><strong>解：<br>思路：由于剪开的两部分要完全相同，此时其一定关于中心对称，我们可以从(3, 3)开始出发，进行dfs遍历，由于dfs是连续找点的，所以找的格子一定是连在一起的，这就保证了可以分成两部分，在dfs遍历的时候同时对其对称的点作标记，这样旋转之后两部分就完全相同，因为旋转对称属于同一种，最终除以4，就是结果。</strong></p>
@@ -433,11 +433,11 @@
     <div class="copyright">
         <p><span>本文标题:</span><a href="">第八届蓝桥杯真题解题报告</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
-        <p><span>发布时间:</span>2019-03-18, 21:39:26</p>
-        <p><span>最后更新:</span>2019-03-18, 21:39:26</p>
+        <p><span>发布时间:</span>2019-03-19, 19:18:06</p>
+        <p><span>最后更新:</span>2019-03-19, 19:18:06</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="" title="第八届蓝桥杯真题解题报告">https://gydjsz.github.io/2019/03/18/algorithm/lqb8/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/algorithm/lqb8/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="" title="第八届蓝桥杯真题解题报告">https://gydjsz.github.io/2019/03/19/algorithm/lqb8/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/19/algorithm/lqb8/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -449,9 +449,15 @@
 
     <nav id="article-nav">
         
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="../../StlLearn/fuction/">
+                    二、STL算法篇
+                </a>
+            </div>
+        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="../lqb7/">
+                <a href="../../../18/algorithm/lqb7/">
                     第七届蓝桥杯真题解题报告
                 </a>
             </div>
@@ -495,19 +501,21 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="../../StlLearn/fuction/" title="上一篇: 二、STL算法篇">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="../lqb7/" title="下一篇: 第七届蓝桥杯真题解题报告">
+            <a href="../../../18/algorithm/lqb7/" title="下一篇: 第七届蓝桥杯真题解题报告">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../20/algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
 
 
 
