@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="停止，启动，重启SQL server服务">
+<meta name="description" content="一、好用的工具 autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录j path: 进入path目录j: 进入权值最高的目录j -i[权重]: 增加权值j -d[权重]: 减少权值jo path: 打开目录j -s: 显示自动跳转数据库中的条目">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库使用笔记">
-<meta property="og:url" content="https://gydjsz.github.io/2019/03/18/SQL/useSqlServer/index.html">
+<meta property="og:title" content="Linux下的技巧操作">
+<meta property="og:url" content="https://gydjsz.github.io/2019/03/27/Linux/linuxTip/index.html">
 <meta property="og:site_name" content="梦之彼岸">
-<meta property="og:description" content="停止，启动，重启SQL server服务">
+<meta property="og:description" content="一、好用的工具 autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录j path: 进入path目录j: 进入权值最高的目录j -i[权重]: 增加权值j -d[权重]: 减少权值jo path: 打开目录j -s: 显示自动跳转数据库中的条目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-18T12:57:02.448Z">
+<meta property="og:updated_time" content="2019-03-27T11:06:30.456Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库使用笔记">
-<meta name="twitter:description" content="停止，启动，重启SQL server服务">
+<meta name="twitter:title" content="Linux下的技巧操作">
+<meta name="twitter:description" content="一、好用的工具 autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录j path: 进入path目录j: 进入权值最高的目录j -i[权重]: 增加权值j -d[权重]: 减少权值jo path: 打开目录j -s: 显示自动跳转数据库中的条目">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数据库使用笔记 | 梦之彼岸</title>
+<title>Linux下的技巧操作 | 梦之彼岸</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +265,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-SQL/useSqlServer" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Linux/linuxTip" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
       <a href="" class="article-date">
-      <time datetime="2019-03-18T12:57:02.488Z" itemprop="datePublished">2019-03-18</time>
+      <time datetime="2019-03-27T11:06:30.496Z" itemprop="datePublished">2019-03-27</time>
 </a>
 
 
@@ -284,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数据库使用笔记
+      Linux下的技巧操作
     </h1>
   
 
@@ -301,50 +301,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>停止，启动，重启SQL server服务<br><a id="more"></a></p>
-<p>命令：sudo systemctl stop mssql-server     或  service mssql-server stop</p>
-<p>命令：sudo systemctl start mssql-server    或  service mssql-server start</p>
-<p>命令：sudo systemctl restart mssql-server  或  service mssql-server restart </p>
-<p>移除mssqlserver开机自动启动服务<br>update-rc.d -f mssql-server remove</p>
-<ol>
-<li><p>\ld : 查看所有数据库</p>
+        <h1 id="一、好用的工具"><a href="#一、好用的工具" class="headerlink" title="一、好用的工具"></a>一、好用的工具</h1><ol>
+<li><p>autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录<br>j path: 进入path目录<br>j: 进入权值最高的目录<br>j -i[权重]: 增加权值<br>j -d[权重]: 减少权值<br>jo path: 打开目录<br>j -s: 显示自动跳转数据库中的条目</p>
+<a id="more"></a>
 </li>
-<li><p>\lt : 列出所有表</p>
-</li>
-<li><p>use Name : 使用Name数据库</p>
-</li>
-<li><p>CREATE TABLE Student : 创建Student表</p>
-</li>
-<li><p>INSERT INTO Student(Sno, Sage, Ssex) VALUES(1, 10, ‘男’); :插入数据，Student(Sno, Sage, Ssex)，省略括号中的内容，则默认为添加全部值，省略一部分，则为那部分值为空</p>
-</li>
-<li><p>SELECT * FROM INFORMATION_SCHEMA.columns WHERE TABLE_NAME=’表名’ : 获取表的字段名及类型</p>
-</li>
-<li><p>SELECT COLUMN_NAME,DATA_TYPE FROM INFORMATION_SCHEMA.columns WHERE TABLE_NAME=’Student’ : 查询表属性名和类型名</p>
-</li>
-<li><p>ALTER TABLE table_name ADD Sc CHAR(3); : 增加属性Sc<br>ALTER TABLE table_name DROP Sc;         : 删除属性Sc<br>ALTER TABLE table_name ADD COLUMN Sage INT; : 将Sage字符型改为整数<br>ALTER TABLE table_name ADD UNIQUE(Cname);  : 增加Cname必须取唯一值的约束条件</p>
-</li>
-<li><p>SELECT Sage Hello FROM Student; :显示Sage的别名Hello</p>
-</li>
-<li><p>SELECT 2019-Sage FROM Student; : 计算2019 - Sage之后的结果</p>
-</li>
-<li><p>SELECT DISTINCT Sno FROM Student; : 去除重复的行并查询<br>SELECT Sno FROM Student;  =  SELECT ALL Sno FROM Student; : 显示所有查询</p>
-</li>
-<li><p>比较：&lt;&gt; 不等于、!&gt; 不大于、!&lt; 不小于<br>确定范围：BETWEEN a AND b 属性在a~b之间的的元组、NOT BETWEEN a AND b<br>确定集合：IN, NOT IN<br>字符匹配：LIKE, NOT LIKE<br>空值：IS NULL, NOT NULL<br>多重条件：AND, OR, NOT</p>
+<li><p>xsel: 建立终端和剪切板之间的通道<br>cat txt | xsel -b -i: 将txt文件中的内容复制到xsel中<br>xsel &gt; txt: 将xsel中的内容复制到txt中<br>xsel -o -i: 查看xsel中的内容</p>
 </li>
 </ol>
-<ol start="12">
-<li><p>SELECT Sname FROM Student WHERE Sdept=’CS’; :显示Sdept=’CS’的Sname</p>
+<h1 id="二、一些操作"><a href="#二、一些操作" class="headerlink" title="二、一些操作"></a>二、一些操作</h1><ol>
+<li><p>python版本切换<br>sudo update-alternatives –config python</p>
 </li>
-<li><p>SELECT Sname FROM Student WHERE Sage IN(‘10’, ‘20’);  :显示年龄为10和20的学生姓名</p>
-</li>
-<li><p>SELECT Sname FROM Student WHERE Sno LIKE’2%3’;  :查找学号以2开头3结尾的学生姓名<br>% :代表任意长度<br>_ :代表任意单个字符</p>
-</li>
-<li><p>SELECT * FROM Student ORDER BY Sno DESC;  :按Sno降序显示Student表(ASC为升序) </p>
-</li>
-<li><p>ALTER TABLE Course ADD FOREIGN KEY(Sno) REFERENCES Student(Sno);  :修改Course中的Sno为Student(Sno)外码</p>
+<li><p>使用清华源，提升pip下载速度<br>Linux下，修改 ~/.pip/pip.conf (没有就创建一个文件夹及文件。文件夹要加“.”，表示是隐藏文件夹)</p>
 </li>
 </ol>
-<p>从Excel文件中,导入数据到SQL数据库中,<br>     select * into 表 from<br> OPENROWSET(‘MICROSOFT.JET.OLEDB.4.0’<br> ,’Excel 5.0;HDR=YES;DATABASE=c:\test.xls’,sheet1$)</p>
+<p>内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host=mirrors.aliyun.com</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>查看服务状态<br>service –status-all  查看所有的服务状态<br>service xx status     查看xx的服务状态</li>
+</ol>
 
       
     </div>
@@ -353,13 +326,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="">数据库使用笔记</a></p>
+        <p><span>本文标题:</span><a href="">Linux下的技巧操作</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">gydjsz</a></p>
-        <p><span>发布时间:</span>2019-03-18, 20:57:02</p>
-        <p><span>最后更新:</span>2019-03-18, 20:57:02</p>
+        <p><span>发布时间:</span>2019-03-27, 19:06:30</p>
+        <p><span>最后更新:</span>2019-03-27, 19:06:30</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="" title="数据库使用笔记">https://gydjsz.github.io/2019/03/18/SQL/useSqlServer/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/18/SQL/useSqlServer/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="" title="Linux下的技巧操作">https://gydjsz.github.io/2019/03/27/Linux/linuxTip/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://gydjsz.github.io/2019/03/27/Linux/linuxTip/　　作者: gydjsz" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -372,15 +345,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="../../python/learnPython/">
-                    python
+                <a href="../../../../04/08/SQL/useSqlServer/">
+                    数据库使用笔记
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="../../markdown/">
-                    markdown语法学习
+                <a href="../../../23/algorithm/lqb9/">
+                    第九届蓝桥杯真题题解
                 </a>
             </div>
         
@@ -392,7 +365,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、好用的工具"><span class="toc-number">1.</span> <span class="toc-text">一、好用的工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、一些操作"><span class="toc-number">2.</span> <span class="toc-text">二、一些操作</span></a></li></ol>
         
     </div>
     <style>
@@ -423,7 +396,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="../../python/learnPython/" title="上一篇: python">
+            <a href="../../../../04/08/SQL/useSqlServer/" title="上一篇: 数据库使用笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -431,13 +404,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="../../markdown/" title="下一篇: markdown语法学习">
+            <a href="../../../23/algorithm/lqb9/" title="下一篇: 第九届蓝桥杯真题题解">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../23/algorithm/lqb9/">第九届蓝桥杯真题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../20/StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../20/algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../../19/algorithm/lqb8/">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../Linux/linuxTool/">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="../../markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../../04/08/SQL/useSqlServer/">数据库使用笔记</a></li><li class="post-list-item"><a class="post-list-link" href="">Linux下的技巧操作</a></li><li class="post-list-item"><a class="post-list-link" href="../../../23/algorithm/lqb9/">第九届蓝桥杯真题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../20/StlLearn/fuction/">二、STL算法篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../20/algorithm/lqb6/">第六届蓝桥杯真题解析</a></li><li class="post-list-item"><a class="post-list-link" href="../../../19/algorithm/lqb8/">第八届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/lqb7/">第七届蓝桥杯真题解题报告</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/algorithm/bipartiteGraph/">二分图</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Interest/youdao/">linux终端下实现有道翻译</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/TankGame/">坦克大战</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/javaString/">String类</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/graphicsLibrary/">java图形库学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Java/dataType/">java基本数据类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/GoodShortCutkey/">学习新的emacs快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/emacs/">emacs配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnEmacs/addPlug/">为emacs添加源</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnVim/vimrc/">vim配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/LearnVim/VimKeyCut/">vim快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/Linux/longRange/">远程登陆linux系统</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/matlabLearn/matlab/">matlab学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/python/learnPython/">python</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/markdown/">markdown语法学习</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/improveBrowseSpeed/">加快github和firefox扩展页面访问速度</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/hexoBuild/">github搭建自己的博客步骤</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/GoodWebsiteCollection/">链接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="../../../18/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../../../17/StlLearn/container/">一、STL容器篇</a></li><li class="post-list-item"><a class="post-list-link" href="../../../09/algorithm/math/">数学知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../02/05/virtual/virtualOperation/">虚拟机与windows 10互传文件</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/SetTerminalKey/">设置终端打开的快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/CutPathName/">缩略linux路径</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Compile/">c++和java在linux下的编译运行</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/TurnCharacter/">设置emacs在shell中显示</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/xselOperation/">How to operate xsel in Linux?</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/Mouse/">终端下emacs鼠标支持</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnEmacs/EmacsTypeFace/">设置emacs里面的字体类型</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/setRoot/">设置root密码</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/LearnVim/vimInEclipse/">在eclipse中使用vim</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Linux/Install_Ntfs-3g/">centos7中使用yum安装ntfs-3g</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/environmentVariable/">c++ 和 java添加环境变量</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/questionBankExport/">java题库导出</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/sendMessage/">java中的消息对话框</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../01/19/Java/setBackground/">关于JFrame使用setBackground()设置背景色没反应的问题</a></li></ul>
 
 
 
@@ -502,6 +475,27 @@
 
 
 
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 <div class="scroll" id="scroll">
     <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
     <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
@@ -528,6 +522,23 @@
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
