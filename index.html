@@ -271,11 +271,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-SQL/useSqlServer" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/7.并查集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/04/08/SQL/useSqlServer/" class="article-date">
-      <time datetime="2019-04-08T04:37:17.911Z" itemprop="datePublished">2019-04-08</time>
+      <a href="2019/04/18/algorithm/7.并查集/" class="article-date">
+      <time datetime="2019-04-18T06:47:45.332Z" itemprop="datePublished">2019-04-18</time>
 </a>
 
 
@@ -290,7 +290,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/04/08/SQL/useSqlServer/">数据库使用笔记</a>
+      <a class="article-title" href="2019/04/18/algorithm/7.并查集/">并查集</a>
     </h1>
   
 
@@ -300,7 +300,63 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>停止，启动，重启SQL server服务<br>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> SIZE = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> father[SIZE], height[SIZE];   <span class="comment">//father记录每个元素的上级，height记录等级</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;  </span><br><span class="line">		father[i] = i;    <span class="comment">//初始时，每个元素的上司是自己</span></span><br><span class="line">		height[i] = <span class="number">1</span>;    <span class="comment">//初始等级为1</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> father[v] = father[v] == v ? v : find(father[v]);   <span class="comment">//找到元素的最高一级指挥官</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">	x = find(x);</span><br><span class="line">	y = find(y);</span><br><span class="line">	<span class="keyword">if</span>(height[x] &lt; height[y])    <span class="comment">//把等级低的放等级高的下面</span></span><br><span class="line">		father[x] =father[y];</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		father[y] = x;               <span class="comment">// 如果后者等级高，那么将等级低的归自己管</span></span><br><span class="line">		<span class="keyword">if</span>(height[x] == height[y])   <span class="comment">//如果两者等级相等，那么当把同等级的归自己管，而自己等级需+1</span></span><br><span class="line">			height[x]++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	init(n);   <span class="comment">//初始化等级</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++)&#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;      <span class="comment">//输入有关联的两个人</span></span><br><span class="line">		join(x, y);         <span class="comment">//加入到集合中来 </span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; find(i) &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/8.埃氏筛法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/8.埃氏筛法/" class="article-date">
+      <time datetime="2019-04-18T06:46:51.090Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/8.埃氏筛法/">埃氏筛法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p> 埃氏筛法：首先用一张表把1～n的所有数表示出来，其中2是最小的素数，将表中所有2的倍数划去，表中剩余的最小数字为3，它不能被更小的数整除，因而它是素数，将3的倍数从表中划去，依次类推，就能枚举n以内的素数, 时间复杂度O(nlognlogn)<br>
           
       
     </p></div>
@@ -312,7 +368,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/04/08/SQL/useSqlServer/#more">阅读全文 >></a>
+          <a href="2019/04/18/algorithm/8.埃氏筛法/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -331,11 +387,11 @@
 
 
   
-    <article id="post-Linux/linuxTip" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/1" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/03/27/Linux/linuxTip/" class="article-date">
-      <time datetime="2019-03-27T11:06:30.496Z" itemprop="datePublished">2019-03-27</time>
+      <a href="2019/04/18/algorithm/1/" class="article-date">
+      <time datetime="2019-04-18T06:44:01.505Z" itemprop="datePublished">2019-04-18</time>
 </a>
 
 
@@ -346,95 +402,10 @@
       <input type="hidden" class="isFancy">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/27/Linux/linuxTip/">Linux下的技巧操作</a>
-    </h1>
-  
-
-      </header>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="一、好用的工具"><a href="#一、好用的工具" class="headerlink" title="一、好用的工具"></a>一、好用的工具</h1><ol>
-<li><p>autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录<br>j path: 进入path目录<br>j: 进入权值最高的目录<br>j -i[权重]: 增加权值<br>j -d[权重]: 减少权值<br>jo path: 打开目录<br>j -s: 显示自动跳转数据库中的条目</p>
-          
-      
-    </li></ol></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/27/Linux/linuxTip/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/lqb9" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/23/algorithm/lqb9/" class="article-date">
-      <time datetime="2019-03-23T10:37:59.054Z" itemprop="datePublished">2019-03-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/23/algorithm/lqb9/">第九届蓝桥杯真题题解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><span id="0">目录：</span></p>
-<ol>
-<li><a href="#1">第几天</a></li>
-<li><a href="#2">明码</a></li>
-<li><a href="#3">乘积尾零</a></li>
-<li><a href="#4">测试次数</a></li>
-<li><a href="#5">快速排序</a></li>
-<li><a href="#6">递增三元组</a></li>
-<li><a href="#7">螺旋折线</a></li>
-<li><a href="#8">日志统计</a></li>
-<li><a href="#9">全球变暖</a></li>
-<li><a href="#10">乘积最大</a></li>
-</ol>
-          
       
     </div>
     
@@ -444,8 +415,121 @@
 
       
       
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/6.矩阵快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/6.矩阵快速幂/" class="article-date">
+      <time datetime="2019-04-18T06:39:17.707Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/6.矩阵快速幂/">矩阵快速幂</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 利用矩阵快速幂求斐波那切数列</span><br><span class="line"> F[i] = 1 * F[i - 1] + 1 * F[i - 2] </span><br><span class="line"> F[i - 1] = 1 * F[i - 1] + 0 * F[i - 2];</span><br><span class="line"></span><br><span class="line"> -       -    -   -     -        -</span><br><span class="line">|  F[i]	  | =| 1 1 | * | F[n - 1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   | F[n - 2] |</span><br><span class="line"> -       -    -   -     -        - </span><br><span class="line"> -       -    -   - ^(n - 1) -    -</span><br><span class="line">|  F[i]	  | =| 1 1 |        | F[1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   *    | F[0] |</span><br><span class="line"> -       -    -   -          -    - </span><br><span class="line"></span><br><span class="line">      -   -  </span><br><span class="line"> A = | 1 1 |</span><br><span class="line">     | 1 0 |</span><br><span class="line">      -   - </span><br><span class="line"></span><br><span class="line"> 也就是使用矩阵快速幂求出A的n - 1次方，F[1] = 1, F[0] = 0,求得的矩阵为A&apos;(2 * 1)，数列第ｎ个的值为A&apos;[0][0]</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt; mat;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//矩阵相乘</span></span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat &amp;A, mat &amp;B)</span></span>&#123;</span><br><span class="line">	<span class="comment">//Ｃ默认值为0</span></span><br><span class="line">	<span class="function">mat <span class="title">C</span><span class="params">(A.size(), vec(B[<span class="number">0</span>].size()))</span></span>;   <span class="comment">//A.size()是矩阵的行，B[0].size()是矩阵的列, n * m 矩阵　和　m * k矩阵相乘之后，新矩阵为n * k</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; B.size(); j++)   <span class="comment">//B.size()是矩阵的行，也就是A[0].size()</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; B[<span class="number">0</span>].size(); k++)</span><br><span class="line">				C[i][j] += A[i][k] * B[k][j];  <span class="comment">//新矩阵当前值=矩阵A的当前行 * 矩阵B的当前列的和</span></span><br><span class="line">	<span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//快速幂</span></span><br><span class="line"><span class="function">mat <span class="title">pow</span><span class="params">(mat A, ll n)</span></span>&#123;</span><br><span class="line">	<span class="function">mat <span class="title">B</span><span class="params">(A.size(), vec(A.size()))</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">		B[i][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n &amp; <span class="number">1</span>)</span><br><span class="line">			B = mul(B, A);</span><br><span class="line">		A = mul(A, A);</span><br><span class="line">		n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求斐波那切数列</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="function">mat <span class="title">A</span><span class="params">(<span class="number">2</span>, vec(<span class="number">2</span>))</span></span>;</span><br><span class="line">	A[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	A = <span class="built_in">pow</span>(A, n - <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; A[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">/* //求矩阵Ａ× Ｂ</span></span><br><span class="line"><span class="comment">	int ax, ay, bx, by;</span></span><br><span class="line"><span class="comment">	cin &gt;&gt; ax &gt;&gt; ay &gt;&gt; bx &gt;&gt; by;</span></span><br><span class="line"><span class="comment">	//A(M, vec(M))是vector的组合，就是一个vector中的数据是vector&lt;int&gt;,每个vector&lt;int&gt;存储整数值，可以理解为一个二维数组</span></span><br><span class="line"><span class="comment">	//vec中存储vec1,vec2,vec3,vec4, 而vec1中存储1, 2, 3, 4</span></span><br><span class="line"><span class="comment">	//vec: vec1  vec2  vec3  vec4</span></span><br><span class="line"><span class="comment">	//     1     1     1     1</span></span><br><span class="line"><span class="comment">	//     2     2     2     2</span></span><br><span class="line"><span class="comment">	//     3     3     3     3</span></span><br><span class="line"><span class="comment">	//     4     4     4     4</span></span><br><span class="line"><span class="comment">	mat A(M, vec(M)), B(M, vec(M));</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; ax; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; ay; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; A[i][j];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; bx; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; by; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; B[i][j];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	mat C = mul(A, B);</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; ax; i++)&#123;</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; by; j++)</span></span><br><span class="line"><span class="comment">			cout &lt;&lt; C[i][j] &lt;&lt; " ";</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* // 求矩阵Ａ的ｍ次方</span></span><br><span class="line"><span class="comment">	int n, m;</span></span><br><span class="line"><span class="comment">	cin &gt;&gt; n &gt;&gt; m;   //ｎ为矩阵的阶，ｍ为幂次</span></span><br><span class="line"><span class="comment">	mat A(M, vec(M));</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; n; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; n; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; A[i][j];</span></span><br><span class="line"><span class="comment">	mat B = pow(A, m);</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; n; i++)&#123;</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; n; j++)</span></span><br><span class="line"><span class="comment">			cout &lt;&lt; B[i][j] &lt;&lt; " ";</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125; */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//求斐波那切数列	</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	Fibonacci(n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/5.快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/5.快速幂/" class="article-date">
+      <time datetime="2019-04-18T06:38:38.966Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/5.快速幂/">快速幂</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x ^ n = ((x^2)^2)...</span><br><span class="line">x ^ n = x^(2^k1) * x^(2^k2)...</span><br><span class="line">x^22 = x^2 * x^4 * x^16</span><br><span class="line">x^21 = x * x^4 * 2^16  //21的二进制为10101，在１处进行res *= x;</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
         <p class="article-more-link">
-          <a href="2019/03/23/algorithm/lqb9/#more">阅读全文 >></a>
+          <a href="2019/04/18/algorithm/5.快速幂/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -464,11 +548,11 @@
 
 
   
-    <article id="post-StlLearn/fuction" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/4.乘法逆元" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/03/20/StlLearn/fuction/" class="article-date">
-      <time datetime="2019-03-20T11:53:22.695Z" itemprop="datePublished">2019-03-20</time>
+      <a href="2019/04/18/algorithm/4.乘法逆元/" class="article-date">
+      <time datetime="2019-04-18T06:36:41.841Z" itemprop="datePublished">2019-04-18</time>
 </a>
 
 
@@ -483,7 +567,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/03/20/StlLearn/fuction/">二、STL算法篇</a>
+      <a class="article-title" href="2019/04/18/algorithm/4.乘法逆元/">乘法逆元</a>
     </h1>
   
 
@@ -493,7 +577,243 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>//去掉对c输入输出的兼容，加快c++速度<br>std::ios::sync_with_stdio(false);<br>cin.tie(NULL);<br>
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* a * x = 1 (mod p)   x称为ａ关于１模p的乘法逆元,求x</span><br><span class="line"> *</span><br><span class="line"> * 方法一：扩展欧拉定理</span><br><span class="line"> * a * x = 1 (mod p)  =&gt; a * x + p * y = 1</span><br><span class="line"> * 利用扩展欧几里得法求得ｘ和ｙ，其中x为a关于１模ｐ乘法逆元</span><br><span class="line"> *</span><br><span class="line"> * 方法二：费马小定理</span><br><span class="line"> * 费马小定理：假如p是质数，且gcd(a,p)=1，那么 a^(p-1)≡ 1（mod p）  (p是质数)</span><br><span class="line"> *    a ^ (p - 1) = 1 (mod p)</span><br><span class="line"> * =&gt; a * a ^ (p - 2) = 1 (mod p)</span><br><span class="line"> * 令x = a^-1, x = a ^ (p - 2)(mod p)</span><br><span class="line"> * 利用快速幂求得x</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/04/18/algorithm/4.乘法逆元/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/2.最大公约数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/2.最大公约数/" class="article-date">
+      <time datetime="2019-04-18T05:47:02.577Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/2.最大公约数/">最大公约数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//辗转相除法</span><br><span class="line"> a = 6 b = 4</span><br><span class="line"> a - b * k = n</span><br><span class="line"> a % b = n</span><br><span class="line"> 6 - 4 * 1 = 2   gcd(b, a % b) =&gt; a = 4(b) b = 2(a % b)</span><br><span class="line"> 4 - 2 * 1 = 2   =&gt; a = 2 b = 2</span><br><span class="line"> 2 - 2 * 1 = 0   =&gt; a = 2 b = 0   当ｂ＝０时,得到最大公约数2</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/04/18/algorithm/2.最大公约数/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/3.扩展欧几里得算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/3.扩展欧几里得算法/" class="article-date">
+      <time datetime="2019-04-18T05:46:52.881Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/3.扩展欧几里得算法/">扩展欧几里得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">当b = 0时，gcd(a, b) = a, 此时x = 1, y = 0</span><br><span class="line">当a &gt; b时，设a * x1 + b * y1 = gcd(a, b);</span><br><span class="line">             b * x2 + (a % b) * y2 = gcd(b, a % b);</span><br><span class="line">gcd(a, b) = gcd(b, a % b);</span><br><span class="line">所以a * x1 + b * y1 = b * x2 + (a % b) * y2;</span><br><span class="line">=&gt; a * x1 + b * y1 = b * x2 + (a - [a / b] * b) * y2;   []表示取整</span><br><span class="line">=&gt; a * x1 + b * y1 = a * y2 + b * (x2 - [a / b] * y2);</span><br><span class="line">=&gt; x1 = y2,  y1 = x2 - [a / b] * y2</span><br><span class="line"></span><br><span class="line">此时得出x1和y1的值基于x2和y2,因而可以将每次a * x2 + b * y2 = gcd(b, a % b)的x2、y2的值代入求得x1和y1, 多次递归后b = 0，x = 1, y = 0,　最终求得x和y的值，即a * x + b * y = gcd(a, b) 的方程组的解</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/04/18/algorithm/3.扩展欧几里得算法/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/1.枚举n个数的排列" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/1.枚举n个数的排列/" class="article-date">
+      <time datetime="2019-04-18T05:43:42.066Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/1.枚举n个数的排列/">枚举n个数的排列</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int swap(int &amp;a, int &amp;b)&#123;   //交换数组中两个元素位置</span><br><span class="line">	int t = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = t;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int permutation(int k, int n, int perm[])&#123;</span><br><span class="line">	if(k == n - 1)&#123;</span><br><span class="line">		for(int i = 0; i &lt; n; i++)   //输出一个排列</span><br><span class="line">			cout &lt;&lt; perm[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = k; i &lt; n; i++)&#123;</span><br><span class="line">		if(i != k &amp;&amp; perm[i] == perm[k]) continue;    //除本身外，如果交换的两个数相同，则跳过</span><br><span class="line">		swap(perm[i], perm[k]);   </span><br><span class="line">		permutation(k + 1, n, perm);   //递归进行排列</span><br><span class="line">		swap(perm[i], perm[k]);        //恢复原来的位置</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	int a[n];</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">	permutation(0, n, a);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-LearnVim/vimrc" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/LearnVim/vimrc/" class="article-date">
+      <time datetime="2019-04-18T05:41:25.201Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/LearnVim/vimrc/">vim配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>“ —————————– Vundle Start —————————–<br>set nocompatible<br>filetype off<br>set rtp+=~/.vim/bundle/Vundle.vim<br>call vundle#begin()<br>“插件管理<br>Plugin ‘VundleVim/Vundle.vim’<br>“目录树<br>Plugin ‘The-NERD-tree’<br>“代码补全<br>Bundle ‘Valloric/YouCompleteMe’<br>“异步语法检查<br>Plugin ‘w0rp/ale’<br>call vundle#end()<br>filetype plugin indent on<br>“ —————————– Vundle End   —————————–<br>
           
       
     </p></div>
@@ -505,405 +825,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/03/20/StlLearn/fuction/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/lqb6" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/20/algorithm/lqb6/" class="article-date">
-      <time datetime="2019-03-20T10:53:11.097Z" itemprop="datePublished">2019-03-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/20/algorithm/lqb6/">第六届蓝桥杯真题解析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <ol>
-<li><a href="https://www.ctguqmx.com/article/222" target="_blank" rel="noopener">启明星工作室解析</a></li>
-</ol>
-<p><span id="0">目录：</span></p>
-<ol>
-<li><a href="#1">奖券数目</a></li>
-<li><a href="#2">星系炸弹</a></li>
-<li><a href="#3">三羊献瑞</a></li>
-<li><a href="#4">格子中输出</a></li>
-<li><a href="#5">九数组分数</a></li>
-<li><a href="#6">加法变乘法</a></li>
-<li><a href="#7">牌型种数</a></li>
-<li><a href="#8">移动距离</a></li>
-<li><a href="#9">垒骰子</a></li>
-<li><a href="#10">生命之树</a></li>
-</ol>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/20/algorithm/lqb6/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/lqb8" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/19/algorithm/lqb8/" class="article-date">
-      <time datetime="2019-03-19T11:18:06.553Z" itemprop="datePublished">2019-03-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/19/algorithm/lqb8/">第八届蓝桥杯真题解题报告</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><span id="0">目录：</span></p>
-<ol>
-<li><a href="#1">购物单</a></li>
-<li><a href="#2">等差素数列</a></li>
-<li><a href="#3">承压计算</a></li>
-<li><a href="#4">方格分割</a></li>
-<li><a href="#5">取数位</a></li>
-<li><a href="#6">最大公共子串</a></li>
-<li><a href="#7">日期问题</a></li>
-<li><a href="#8">包子凑数</a></li>
-<li><a href="#9">分巧克力</a></li>
-<li><a href="#10">k倍区间</a>
-          
-      
-    </li></ol></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/19/algorithm/lqb8/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/lqb7" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/18/algorithm/lqb7/" class="article-date">
-      <time datetime="2019-03-18T13:31:16.300Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/18/algorithm/lqb7/">第七届蓝桥杯真题解题报告</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><span id="0">目录：</span></p>
-<ol>
-<li><a href="#1">煤球数目</a></li>
-<li><a href="#2">生日蜡烛</a></li>
-<li><a href="#3">凑算式</a></li>
-<li><a href="#4">快速排序</a></li>
-<li><a href="#5">抽签</a></li>
-<li><a href="#6">方格填数</a></li>
-<li><a href="#7">剪邮票</a></li>
-<li><a href="#8">四平方和</a></li>
-<li><a href="#9">交换瓶子</a></li>
-<li><a href="#10">最大比例</a></li>
-</ol>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/18/algorithm/lqb7/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/nowcoderPractice34" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/18/algorithm/nowcoderPractice34/" class="article-date">
-      <time datetime="2019-03-18T13:03:02.799Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/18/algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>学到了前缀和,开心<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/18/algorithm/nowcoderPractice34/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/nowcoderPractice41" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/18/algorithm/nowcoderPractice41/" class="article-date">
-      <time datetime="2019-03-18T13:02:47.415Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/18/algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>这题貌似知道了公式就简单了<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/18/algorithm/nowcoderPractice41/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/bipartiteGraph" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/03/18/algorithm/bipartiteGraph/" class="article-date">
-      <time datetime="2019-03-18T13:01:04.979Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/03/18/algorithm/bipartiteGraph/">二分图</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>参考连接:<br><a href="https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E5%9B%BE/9089095?fr=aladdin" target="_blank" rel="noopener">https://baike.baidu.com/item/%E4%BA%8C%E5%88%86%E5%9B%BE/9089095?fr=aladdin</a><br><a href="https://blog.csdn.net/sixdaycoder/article/details/47720471" target="_blank" rel="noopener">https://blog.csdn.net/sixdaycoder/article/details/47720471</a><br><a href="http://blog.jobbole.com/106084/" target="_blank" rel="noopener">http://blog.jobbole.com/106084/</a><br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/03/18/algorithm/bipartiteGraph/#more">阅读全文 >></a>
+          <a href="2019/04/18/LearnVim/vimrc/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -924,7 +846,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/5/">5</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="page/2/">2</a><a class="page-number" href="page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="page/6/">6</a><a class="extend next" rel="next" href="page/2/">Next &raquo;</a>
     </nav>
   
 </div>
