@@ -271,6 +271,66 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-algorithm/6.矩阵快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/04/18/algorithm/6.矩阵快速幂/" class="article-date">
+      <time datetime="2019-04-18T06:51:12.729Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/04/18/algorithm/6.矩阵快速幂/">矩阵快速幂</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 利用矩阵快速幂求斐波那切数列</span><br><span class="line"> F[i] = 1 * F[i - 1] + 1 * F[i - 2] </span><br><span class="line"> F[i - 1] = 1 * F[i - 1] + 0 * F[i - 2];</span><br><span class="line"></span><br><span class="line"> -       -    -   -     -        -</span><br><span class="line">|  F[i]	  | =| 1 1 | * | F[n - 1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   | F[n - 2] |</span><br><span class="line"> -       -    -   -     -        - </span><br><span class="line"> -       -    -   - ^(n - 1) -    -</span><br><span class="line">|  F[i]	  | =| 1 1 |        | F[1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   *    | F[0] |</span><br><span class="line"> -       -    -   -          -    - </span><br><span class="line"></span><br><span class="line">      -   -  </span><br><span class="line"> A = | 1 1 |</span><br><span class="line">     | 1 0 |</span><br><span class="line">      -   - </span><br><span class="line"></span><br><span class="line"> 也就是使用矩阵快速幂求出A的n - 1次方，F[1] = 1, F[0] = 0,求得的矩阵为A&apos;(2 * 1)，数列第ｎ个的值为A&apos;[0][0]</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/04/18/algorithm/6.矩阵快速幂/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-algorithm/7.并查集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -406,63 +466,6 @@
       
           
         
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/6.矩阵快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/04/18/algorithm/6.矩阵快速幂/" class="article-date">
-      <time datetime="2019-04-18T06:39:17.707Z" itemprop="datePublished">2019-04-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/6.矩阵快速幂/">矩阵快速幂</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 利用矩阵快速幂求斐波那切数列</span><br><span class="line"> F[i] = 1 * F[i - 1] + 1 * F[i - 2] </span><br><span class="line"> F[i - 1] = 1 * F[i - 1] + 0 * F[i - 2];</span><br><span class="line"></span><br><span class="line"> -       -    -   -     -        -</span><br><span class="line">|  F[i]	  | =| 1 1 | * | F[n - 1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   | F[n - 2] |</span><br><span class="line"> -       -    -   -     -        - </span><br><span class="line"> -       -    -   - ^(n - 1) -    -</span><br><span class="line">|  F[i]	  | =| 1 1 |        | F[1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   *    | F[0] |</span><br><span class="line"> -       -    -   -          -    - </span><br><span class="line"></span><br><span class="line">      -   -  </span><br><span class="line"> A = | 1 1 |</span><br><span class="line">     | 1 0 |</span><br><span class="line">      -   - </span><br><span class="line"></span><br><span class="line"> 也就是使用矩阵快速幂求出A的n - 1次方，F[1] = 1, F[0] = 0,求得的矩阵为A&apos;(2 * 1)，数列第ｎ个的值为A&apos;[0][0]</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;vec&gt; mat;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//矩阵相乘</span></span><br><span class="line"><span class="function">mat <span class="title">mul</span><span class="params">(mat &amp;A, mat &amp;B)</span></span>&#123;</span><br><span class="line">	<span class="comment">//Ｃ默认值为0</span></span><br><span class="line">	<span class="function">mat <span class="title">C</span><span class="params">(A.size(), vec(B[<span class="number">0</span>].size()))</span></span>;   <span class="comment">//A.size()是矩阵的行，B[0].size()是矩阵的列, n * m 矩阵　和　m * k矩阵相乘之后，新矩阵为n * k</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; B.size(); j++)   <span class="comment">//B.size()是矩阵的行，也就是A[0].size()</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; B[<span class="number">0</span>].size(); k++)</span><br><span class="line">				C[i][j] += A[i][k] * B[k][j];  <span class="comment">//新矩阵当前值=矩阵A的当前行 * 矩阵B的当前列的和</span></span><br><span class="line">	<span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//快速幂</span></span><br><span class="line"><span class="function">mat <span class="title">pow</span><span class="params">(mat A, ll n)</span></span>&#123;</span><br><span class="line">	<span class="function">mat <span class="title">B</span><span class="params">(A.size(), vec(A.size()))</span></span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.size(); i++)</span><br><span class="line">		B[i][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n &gt; <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(n &amp; <span class="number">1</span>)</span><br><span class="line">			B = mul(B, A);</span><br><span class="line">		A = mul(A, A);</span><br><span class="line">		n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> B;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//求斐波那切数列</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="function">mat <span class="title">A</span><span class="params">(<span class="number">2</span>, vec(<span class="number">2</span>))</span></span>;</span><br><span class="line">	A[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	A[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">	A = <span class="built_in">pow</span>(A, n - <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; A[<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">/* //求矩阵Ａ× Ｂ</span></span><br><span class="line"><span class="comment">	int ax, ay, bx, by;</span></span><br><span class="line"><span class="comment">	cin &gt;&gt; ax &gt;&gt; ay &gt;&gt; bx &gt;&gt; by;</span></span><br><span class="line"><span class="comment">	//A(M, vec(M))是vector的组合，就是一个vector中的数据是vector&lt;int&gt;,每个vector&lt;int&gt;存储整数值，可以理解为一个二维数组</span></span><br><span class="line"><span class="comment">	//vec中存储vec1,vec2,vec3,vec4, 而vec1中存储1, 2, 3, 4</span></span><br><span class="line"><span class="comment">	//vec: vec1  vec2  vec3  vec4</span></span><br><span class="line"><span class="comment">	//     1     1     1     1</span></span><br><span class="line"><span class="comment">	//     2     2     2     2</span></span><br><span class="line"><span class="comment">	//     3     3     3     3</span></span><br><span class="line"><span class="comment">	//     4     4     4     4</span></span><br><span class="line"><span class="comment">	mat A(M, vec(M)), B(M, vec(M));</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; ax; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; ay; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; A[i][j];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; bx; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; by; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; B[i][j];</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	mat C = mul(A, B);</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; ax; i++)&#123;</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; by; j++)</span></span><br><span class="line"><span class="comment">			cout &lt;&lt; C[i][j] &lt;&lt; " ";</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* // 求矩阵Ａ的ｍ次方</span></span><br><span class="line"><span class="comment">	int n, m;</span></span><br><span class="line"><span class="comment">	cin &gt;&gt; n &gt;&gt; m;   //ｎ为矩阵的阶，ｍ为幂次</span></span><br><span class="line"><span class="comment">	mat A(M, vec(M));</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; n; i++)</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; n; j++)</span></span><br><span class="line"><span class="comment">			cin &gt;&gt; A[i][j];</span></span><br><span class="line"><span class="comment">	mat B = pow(A, m);</span></span><br><span class="line"><span class="comment">	for(int i = 0; i &lt; n; i++)&#123;</span></span><br><span class="line"><span class="comment">		for(int j = 0; j &lt; n; j++)</span></span><br><span class="line"><span class="comment">			cout &lt;&lt; B[i][j] &lt;&lt; " ";</span></span><br><span class="line"><span class="comment">		cout &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">	&#125; */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//求斐波那切数列	</span></span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	Fibonacci(n);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
     </div>
     
