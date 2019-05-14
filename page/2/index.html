@@ -271,6 +271,182 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-algorithm/3.扩展欧几里得算法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/04/18/algorithm/3.扩展欧几里得算法/" class="article-date">
+      <time datetime="2019-04-18T05:46:52.881Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/04/18/algorithm/3.扩展欧几里得算法/">扩展欧几里得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">当b = 0时，gcd(a, b) = a, 此时x = 1, y = 0</span><br><span class="line">当a &gt; b时，设a * x1 + b * y1 = gcd(a, b);</span><br><span class="line">             b * x2 + (a % b) * y2 = gcd(b, a % b);</span><br><span class="line">gcd(a, b) = gcd(b, a % b);</span><br><span class="line">所以a * x1 + b * y1 = b * x2 + (a % b) * y2;</span><br><span class="line">=&gt; a * x1 + b * y1 = b * x2 + (a - [a / b] * b) * y2;   []表示取整</span><br><span class="line">=&gt; a * x1 + b * y1 = a * y2 + b * (x2 - [a / b] * y2);</span><br><span class="line">=&gt; x1 = y2,  y1 = x2 - [a / b] * y2</span><br><span class="line"></span><br><span class="line">此时得出x1和y1的值基于x2和y2,因而可以将每次a * x2 + b * y2 = gcd(b, a % b)的x2、y2的值代入求得x1和y1, 多次递归后b = 0，x = 1, y = 0,　最终求得x和y的值，即a * x + b * y = gcd(a, b) 的方程组的解</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/04/18/algorithm/3.扩展欧几里得算法/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/1.枚举n个数的排列" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/04/18/algorithm/1.枚举n个数的排列/" class="article-date">
+      <time datetime="2019-04-18T05:43:42.066Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/04/18/algorithm/1.枚举n个数的排列/">枚举n个数的排列</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int swap(int &amp;a, int &amp;b)&#123;   //交换数组中两个元素位置</span><br><span class="line">	int t = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = t;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int permutation(int k, int n, int perm[])&#123;</span><br><span class="line">	if(k == n - 1)&#123;</span><br><span class="line">		for(int i = 0; i &lt; n; i++)   //输出一个排列</span><br><span class="line">			cout &lt;&lt; perm[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = k; i &lt; n; i++)&#123;</span><br><span class="line">		if(i != k &amp;&amp; perm[i] == perm[k]) continue;    //除本身外，如果交换的两个数相同，则跳过</span><br><span class="line">		swap(perm[i], perm[k]);   </span><br><span class="line">		permutation(k + 1, n, perm);   //递归进行排列</span><br><span class="line">		swap(perm[i], perm[k]);        //恢复原来的位置</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	int a[n];</span><br><span class="line">	for(int i = 0; i &lt; n; i++)</span><br><span class="line">		cin &gt;&gt; a[i];</span><br><span class="line">	permutation(0, n, a);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-LearnVim/vimrc" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/04/18/LearnVim/vimrc/" class="article-date">
+      <time datetime="2019-04-18T05:41:25.201Z" itemprop="datePublished">2019-04-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/04/18/LearnVim/vimrc/">vim配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>“ —————————– Vundle Start —————————–<br>set nocompatible<br>filetype off<br>set rtp+=~/.vim/bundle/Vundle.vim<br>call vundle#begin()<br>“插件管理<br>Plugin ‘VundleVim/Vundle.vim’<br>“目录树<br>Plugin ‘The-NERD-tree’<br>“代码补全<br>Bundle ‘Valloric/YouCompleteMe’<br>“异步语法检查<br>Plugin ‘w0rp/ale’<br>call vundle#end()<br>filetype plugin indent on<br>“ —————————– Vundle End   —————————–<br>
+          
+      
+    </p></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/04/18/LearnVim/vimrc/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-algorithm/nowcoderPractice43" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -521,66 +697,6 @@
 
 
   
-    <article id="post-StlLearn/fuction" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/03/20/StlLearn/fuction/" class="article-date">
-      <time datetime="2019-03-20T11:53:22.695Z" itemprop="datePublished">2019-03-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/03/20/StlLearn/fuction/">二、STL算法篇</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>//去掉对c输入输出的兼容，加快c++速度<br>std::ios::sync_with_stdio(false);<br>cin.tie(NULL);<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/03/20/StlLearn/fuction/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-algorithm/lqb6" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -781,126 +897,6 @@
       
         <p class="article-more-link">
           <a href="../../2019/03/18/algorithm/lqb7/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/nowcoderPractice34" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/03/18/algorithm/nowcoderPractice34/" class="article-date">
-      <time datetime="2019-03-18T13:03:02.799Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/03/18/algorithm/nowcoderPractice34/">牛客练习赛34的C、D题题解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>学到了前缀和,开心<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/03/18/algorithm/nowcoderPractice34/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/nowcoderPractice41" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/03/18/algorithm/nowcoderPractice41/" class="article-date">
-      <time datetime="2019-03-18T13:02:47.415Z" itemprop="datePublished">2019-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/03/18/algorithm/nowcoderPractice41/">牛客练习赛41的E题题解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>这题貌似知道了公式就简单了<br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/03/18/algorithm/nowcoderPractice41/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
