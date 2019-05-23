@@ -271,128 +271,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-Linux/Compile" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/01/19/Linux/Compile/" class="article-date">
-      <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/Linux/Compile/">c++和java在linux下的编译运行</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><font size="4"><strong>c++的编译运行</strong></font><br>g++ &ensp;text.cpp -o &ensp;text.out<br>./text.out</p>
-<p>如果不加 -o ,则默认为a.out<br>g++ &ensp;text.cpp<br>./a.out</p>
-<hr>
-<p><font size="4"><strong>java的编译运行</strong></font><br>javac &ensp;Text.java<br>java &ensp;Text</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Linux/outputRedirection" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/01/19/Linux/outputRedirection/" class="article-date">
-      <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/01/19/Linux/outputRedirection/">Linux将文件内容输出重定向</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <ol>
-<li><p>将一个文件内容重定向至另一个文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat hello.cpp &gt; world.cpp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将一个文件中的内容重定向至剪贴板中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install xsel</span><br><span class="line"></span><br><span class="line">cat hello.cpp | xsel -b -i  //将hello.cpp内容写入剪贴板中</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Linux/SetTerminalKey" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -423,6 +301,124 @@
       
           
         <p>打开设置，找到键盘选项，在右边往下拉，找到‘+’，名称填写：Terminal；命令填写：/usr/bin/gnome-terminal;<br>我的快捷键：C-M-t</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-LearnVim/ColorSetting" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/01/19/LearnVim/ColorSetting/" class="article-date">
+      <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/01/19/LearnVim/ColorSetting/">vim中修改颜色配置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考链接:&ensp;<a href="https://blog.csdn.net/qq_16912257/article/details/77957248" target="_blank" rel="noopener">https://blog.csdn.net/qq_16912257/article/details/77957248</a></p>
+<ol>
+<li><p>在linux终端中输入cd /usr/share/vim/vim74/colors进入目录<br>然后输入ls查看vim中自带的配色方案</p>
+</li>
+<li><p>修改~/.vimrc配置<br>在.vimrc中添加colorscheme peachpuff<br>peachpuff为主题的名字</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-anacondaStart" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/01/19/anacondaStart/" class="article-date">
+      <time datetime="2019-01-19T10:30:53.952Z" itemprop="datePublished">2019-01-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/01/19/anacondaStart/">Ubuntu下打开Anaconda图形界面</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在终端下输入anaconda-navigator</p>
 
       
     </div>
