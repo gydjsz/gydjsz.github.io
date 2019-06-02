@@ -271,11 +271,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-algorithm/math" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-Java/springLearn" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/05/19/algorithm/math/" class="article-date">
-      <time datetime="2019-05-19T08:07:21.037Z" itemprop="datePublished">2019-05-19</time>
+      <a href="2019/06/02/Java/springLearn/" class="article-date">
+      <time datetime="2019-06-02T07:20:45.999Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -290,7 +290,72 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/05/19/algorithm/math/">数学知识集锦</a>
+      <a class="article-title" href="2019/06/02/Java/springLearn/">java高级技术学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><a href="#0"><span id="0">目录:</span></a> </p>
+<ol>
+<li><a href="#1">Junit单元测试</a></li>
+<li><a href="#2">反射</a></li>
+<li><a href="#3">注解</a></li>
+</ol>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/06/02/Java/springLearn/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/math" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/06/02/algorithm/math/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/06/02/algorithm/math/">数学知识集锦</a>
     </h1>
   
 
@@ -312,10 +377,7 @@
 <ol>
 <li>若m,n互质，ϕ(mn) = ϕ(m) * ϕ(n)</li>
 <li>当n为奇质数时，ϕ(2n) = ϕ(n) </li>
-<li><p>若n为质数, 则 ϕ(n) = n - 1</p>
-</li>
-<li><p>精度较高地求π<br>cos(π) = -1<br>=&gt; π = acos(-1)</p>
-</li>
+<li>若n为质数, 则 ϕ(n) = n - 1</li>
 </ol>
 
       
@@ -343,11 +405,11 @@
 
 
   
-    <article id="post-LearnVim/VimKeyCut" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/4.乘法逆元" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/05/19/LearnVim/VimKeyCut/" class="article-date">
-      <time datetime="2019-05-19T02:53:53.656Z" itemprop="datePublished">2019-05-19</time>
+      <a href="2019/06/02/algorithm/4.乘法逆元/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -362,7 +424,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/05/19/LearnVim/VimKeyCut/">vim快捷键</a>
+      <a class="article-title" href="2019/06/02/algorithm/4.乘法逆元/">乘法逆元</a>
     </h1>
   
 
@@ -372,10 +434,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>[参考链接]<a href="https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html" target="_blank" rel="noopener">https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html</a><br>[参考链接]<a href="https://blog.csdn.net/scaleqiao/article/details/45153379" target="_blank" rel="noopener">https://blog.csdn.net/scaleqiao/article/details/45153379</a><br>
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* a * x = 1 (mod p)   x称为ａ关于１模p的乘法逆元,求x</span><br><span class="line"> *</span><br><span class="line"> * 方法一：扩展欧拉定理</span><br><span class="line"> * a * x = 1 (mod p)  =&gt; a * x + p * y = 1</span><br><span class="line"> * 利用扩展欧几里得法求得ｘ和ｙ，其中x为a关于１模ｐ乘法逆元</span><br><span class="line"> *</span><br><span class="line"> * 方法二：费马小定理</span><br><span class="line"> * 费马小定理：假如p是质数，且gcd(a,p)=1，那么 a^(p-1)≡ 1（mod p）  (p是质数)</span><br><span class="line"> *    a ^ (p - 1) = 1 (mod p)</span><br><span class="line"> * =&gt; a * a ^ (p - 2) = 1 (mod p)</span><br><span class="line"> * 令x = a^-1, x = a ^ (p - 2)(mod p)</span><br><span class="line"> * 利用快速幂求得x</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
           
       
-    </p></div>
+    </div>
     
     <div class="article-info article-info-index">
       
@@ -384,7 +446,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/05/19/LearnVim/VimKeyCut/#more">阅读全文 >></a>
+          <a href="2019/06/02/algorithm/4.乘法逆元/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -403,11 +465,11 @@
 
 
   
-    <article id="post-StlLearn/fuction" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/3.扩展欧几里得算法" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/05/15/StlLearn/fuction/" class="article-date">
-      <time datetime="2019-05-15T04:45:57.967Z" itemprop="datePublished">2019-05-15</time>
+      <a href="2019/06/02/algorithm/3.扩展欧几里得算法/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -422,7 +484,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/05/15/StlLearn/fuction/">小技巧</a>
+      <a class="article-title" href="2019/06/02/algorithm/3.扩展欧几里得算法/">扩展欧几里得</a>
     </h1>
   
 
@@ -432,10 +494,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>//去掉对c输入输出的兼容，加快c++速度<br>std::ios::sync_with_stdio(false);<br>cin.tie(NULL);<br>
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">当b = 0时，gcd(a, b) = a, 此时x = 1, y = 0</span><br><span class="line">当a &gt; b时，设a * x1 + b * y1 = gcd(a, b);</span><br><span class="line">             b * x2 + (a % b) * y2 = gcd(b, a % b);</span><br><span class="line">gcd(a, b) = gcd(b, a % b);</span><br><span class="line">所以a * x1 + b * y1 = b * x2 + (a % b) * y2;</span><br><span class="line">=&gt; a * x1 + b * y1 = b * x2 + (a - [a / b] * b) * y2;   []表示取整</span><br><span class="line">=&gt; a * x1 + b * y1 = a * y2 + b * (x2 - [a / b] * y2);</span><br><span class="line">=&gt; x1 = y2,  y1 = x2 - [a / b] * y2</span><br><span class="line"></span><br><span class="line">此时得出x1和y1的值基于x2和y2,因而可以将每次a * x2 + b * y2 = gcd(b, a % b)的x2、y2的值代入求得x1和y1, 多次递归后b = 0，x = 1, y = 0,　最终求得x和y的值，即a * x + b * y = gcd(a, b) 的方程组的解</span><br></pre></td></tr></table></figure>
           
       
-    </p></div>
+    </div>
     
     <div class="article-info article-info-index">
       
@@ -444,7 +506,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/05/15/StlLearn/fuction/#more">阅读全文 >></a>
+          <a href="2019/06/02/algorithm/3.扩展欧几里得算法/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -463,11 +525,11 @@
 
 
   
-    <article id="post-GoodWebsiteCollection" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/2.最大公约数" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/05/08/GoodWebsiteCollection/" class="article-date">
-      <time datetime="2019-05-08T11:12:41.458Z" itemprop="datePublished">2019-05-08</time>
+      <a href="2019/06/02/algorithm/2.最大公约数/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -482,7 +544,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/05/08/GoodWebsiteCollection/">链接收藏</a>
+      <a class="article-title" href="2019/06/02/algorithm/2.最大公约数/">最大公约数</a>
     </h1>
   
 
@@ -492,10 +554,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a><font size="4">下载链接</font></h1><ol>
-<li>putty下载:&ensp;<a href="https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA" target="_blank" rel="noopener">https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA</a><br>&ensp;&ensp;&ensp; 提取码：8of8</li>
-</ol>
-<hr>
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//辗转相除法</span><br><span class="line"> a = 6 b = 4</span><br><span class="line"> a - b * k = n</span><br><span class="line"> a % b = n</span><br><span class="line"> 6 - 4 * 1 = 2   gcd(b, a % b) =&gt; a = 4(b) b = 2(a % b)</span><br><span class="line"> 4 - 2 * 1 = 2   =&gt; a = 2 b = 2</span><br><span class="line"> 2 - 2 * 1 = 0   =&gt; a = 2 b = 0   当ｂ＝０时,得到最大公约数2</span><br></pre></td></tr></table></figure>
           
       
     </div>
@@ -507,127 +566,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/05/08/GoodWebsiteCollection/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-markdown" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/05/08/markdown/" class="article-date">
-      <time datetime="2019-05-08T06:10:13.758Z" itemprop="datePublished">2019-05-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/05/08/markdown/">markdown语法学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>[markdown语法]<a href="https://www.jianshu.com/p/b03a8d7b1719" target="_blank" rel="noopener">https://www.jianshu.com/p/b03a8d7b1719</a><br>[markdown语法]<a href="https://www.appinn.com/markdown/#header" target="_blank" rel="noopener">https://www.appinn.com/markdown/#header</a><br>[markdown缩进]<a href="https://www.cnblogs.com/Flylater/p/6264799.html" target="_blank" rel="noopener">https://www.cnblogs.com/Flylater/p/6264799.html</a><br>[先来一头马克飞象(在线使用markdown)]<a href="https://maxiang.io/" target="_blank" rel="noopener">https://maxiang.io/</a><br>[markdown插入图片]<a href="https://blog.csdn.net/slaughterdevil/article/details/79255933" target="_blank" rel="noopener">https://blog.csdn.net/slaughterdevil/article/details/79255933</a><br>[添加百度云图片链接]<a href="https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html</a><br>
-          
-      
-    </p></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/05/08/markdown/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/6.矩阵快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="2019/04/18/algorithm/6.矩阵快速幂/" class="article-date">
-      <time datetime="2019-04-18T06:51:12.729Z" itemprop="datePublished">2019-04-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/6.矩阵快速幂/">矩阵快速幂</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 利用矩阵快速幂求斐波那切数列</span><br><span class="line"> F[i] = 1 * F[i - 1] + 1 * F[i - 2] </span><br><span class="line"> F[i - 1] = 1 * F[i - 1] + 0 * F[i - 2];</span><br><span class="line"></span><br><span class="line"> -       -    -   -     -        -</span><br><span class="line">|  F[i]	  | =| 1 1 | * | F[n - 1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   | F[n - 2] |</span><br><span class="line"> -       -    -   -     -        - </span><br><span class="line"> -       -    -   - ^(n - 1) -    -</span><br><span class="line">|  F[i]	  | =| 1 1 |        | F[1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   *    | F[0] |</span><br><span class="line"> -       -    -   -          -    - </span><br><span class="line"></span><br><span class="line">      -   -  </span><br><span class="line"> A = | 1 1 |</span><br><span class="line">     | 1 0 |</span><br><span class="line">      -   - </span><br><span class="line"></span><br><span class="line"> 也就是使用矩阵快速幂求出A的n - 1次方，F[1] = 1, F[0] = 0,求得的矩阵为A&apos;(2 * 1)，数列第ｎ个的值为A&apos;[0][0]</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="2019/04/18/algorithm/6.矩阵快速幂/#more">阅读全文 >></a>
+          <a href="2019/06/02/algorithm/2.最大公约数/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -649,8 +588,8 @@
     <article id="post-algorithm/7.并查集" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/04/18/algorithm/7.并查集/" class="article-date">
-      <time datetime="2019-04-18T06:47:45.332Z" itemprop="datePublished">2019-04-18</time>
+      <a href="2019/06/02/algorithm/7.并查集/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -665,7 +604,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/7.并查集/">并查集</a>
+      <a class="article-title" href="2019/06/02/algorithm/7.并查集/">并查集</a>
     </h1>
   
 
@@ -702,11 +641,11 @@
 
 
   
-    <article id="post-algorithm/8.埃氏筛法" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-algorithm/6.矩阵快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/04/18/algorithm/8.埃氏筛法/" class="article-date">
-      <time datetime="2019-04-18T06:46:51.090Z" itemprop="datePublished">2019-04-18</time>
+      <a href="2019/06/02/algorithm/6.矩阵快速幂/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -721,7 +660,67 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/8.埃氏筛法/">埃氏筛法</a>
+      <a class="article-title" href="2019/06/02/algorithm/6.矩阵快速幂/">矩阵快速幂</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> 利用矩阵快速幂求斐波那切数列</span><br><span class="line"> F[i] = 1 * F[i - 1] + 1 * F[i - 2] </span><br><span class="line"> F[i - 1] = 1 * F[i - 1] + 0 * F[i - 2];</span><br><span class="line"></span><br><span class="line"> -       -    -   -     -        -</span><br><span class="line">|  F[i]	  | =| 1 1 | * | F[n - 1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   | F[n - 2] |</span><br><span class="line"> -       -    -   -     -        - </span><br><span class="line"> -       -    -   - ^(n - 1) -    -</span><br><span class="line">|  F[i]	  | =| 1 1 |        | F[1] | </span><br><span class="line">|F[i - 1] |  | 1 0 |   *    | F[0] |</span><br><span class="line"> -       -    -   -          -    - </span><br><span class="line"></span><br><span class="line">      -   -  </span><br><span class="line"> A = | 1 1 |</span><br><span class="line">     | 1 0 |</span><br><span class="line">      -   - </span><br><span class="line"></span><br><span class="line"> 也就是使用矩阵快速幂求出A的n - 1次方，F[1] = 1, F[0] = 0,求得的矩阵为A&apos;(2 * 1)，数列第ｎ个的值为A&apos;[0][0]</span><br></pre></td></tr></table></figure>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="2019/06/02/algorithm/6.矩阵快速幂/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-algorithm/8.埃氏筛法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="2019/06/02/algorithm/8.埃氏筛法/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="2019/06/02/algorithm/8.埃氏筛法/">埃氏筛法</a>
     </h1>
   
 
@@ -743,7 +742,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/04/18/algorithm/8.埃氏筛法/#more">阅读全文 >></a>
+          <a href="2019/06/02/algorithm/8.埃氏筛法/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -765,8 +764,8 @@
     <article id="post-algorithm/5.快速幂" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/04/18/algorithm/5.快速幂/" class="article-date">
-      <time datetime="2019-04-18T06:38:38.966Z" itemprop="datePublished">2019-04-18</time>
+      <a href="2019/06/02/algorithm/5.快速幂/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.162Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -781,7 +780,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/5.快速幂/">快速幂</a>
+      <a class="article-title" href="2019/06/02/algorithm/5.快速幂/">快速幂</a>
     </h1>
   
 
@@ -803,7 +802,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/04/18/algorithm/5.快速幂/#more">阅读全文 >></a>
+          <a href="2019/06/02/algorithm/5.快速幂/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -822,11 +821,11 @@
 
 
   
-    <article id="post-algorithm/4.乘法逆元" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-StlLearn/fuction" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="2019/04/18/algorithm/4.乘法逆元/" class="article-date">
-      <time datetime="2019-04-18T06:36:41.841Z" itemprop="datePublished">2019-04-18</time>
+      <a href="2019/06/02/StlLearn/fuction/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.158Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -841,7 +840,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="2019/04/18/algorithm/4.乘法逆元/">乘法逆元</a>
+      <a class="article-title" href="2019/06/02/StlLearn/fuction/">小技巧</a>
     </h1>
   
 
@@ -851,10 +850,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/* a * x = 1 (mod p)   x称为ａ关于１模p的乘法逆元,求x</span><br><span class="line"> *</span><br><span class="line"> * 方法一：扩展欧拉定理</span><br><span class="line"> * a * x = 1 (mod p)  =&gt; a * x + p * y = 1</span><br><span class="line"> * 利用扩展欧几里得法求得ｘ和ｙ，其中x为a关于１模ｐ乘法逆元</span><br><span class="line"> *</span><br><span class="line"> * 方法二：费马小定理</span><br><span class="line"> * 费马小定理：假如p是质数，且gcd(a,p)=1，那么 a^(p-1)≡ 1（mod p）  (p是质数)</span><br><span class="line"> *    a ^ (p - 1) = 1 (mod p)</span><br><span class="line"> * =&gt; a * a ^ (p - 2) = 1 (mod p)</span><br><span class="line"> * 令x = a^-1, x = a ^ (p - 2)(mod p)</span><br><span class="line"> * 利用快速幂求得x</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+              <p>//去掉对c输入输出的兼容，加快c++速度<br>std::ios::sync_with_stdio(false);<br>cin.tie(NULL);<br>
           
       
-    </div>
+    </p></div>
     
     <div class="article-info article-info-index">
       
@@ -863,7 +862,7 @@
       
       
         <p class="article-more-link">
-          <a href="2019/04/18/algorithm/4.乘法逆元/#more">阅读全文 >></a>
+          <a href="2019/06/02/StlLearn/fuction/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>

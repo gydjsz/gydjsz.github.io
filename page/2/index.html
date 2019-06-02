@@ -271,131 +271,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-algorithm/2.最大公约数" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/04/18/algorithm/2.最大公约数/" class="article-date">
-      <time datetime="2019-04-18T05:47:02.577Z" itemprop="datePublished">2019-04-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/04/18/algorithm/2.最大公约数/">最大公约数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//辗转相除法</span><br><span class="line"> a = 6 b = 4</span><br><span class="line"> a - b * k = n</span><br><span class="line"> a % b = n</span><br><span class="line"> 6 - 4 * 1 = 2   gcd(b, a % b) =&gt; a = 4(b) b = 2(a % b)</span><br><span class="line"> 4 - 2 * 1 = 2   =&gt; a = 2 b = 2</span><br><span class="line"> 2 - 2 * 1 = 0   =&gt; a = 2 b = 0   当ｂ＝０时,得到最大公约数2</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/04/18/algorithm/2.最大公约数/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/3.扩展欧几里得算法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/04/18/algorithm/3.扩展欧几里得算法/" class="article-date">
-      <time datetime="2019-04-18T05:46:52.881Z" itemprop="datePublished">2019-04-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/04/18/algorithm/3.扩展欧几里得算法/">扩展欧几里得</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">当b = 0时，gcd(a, b) = a, 此时x = 1, y = 0</span><br><span class="line">当a &gt; b时，设a * x1 + b * y1 = gcd(a, b);</span><br><span class="line">             b * x2 + (a % b) * y2 = gcd(b, a % b);</span><br><span class="line">gcd(a, b) = gcd(b, a % b);</span><br><span class="line">所以a * x1 + b * y1 = b * x2 + (a % b) * y2;</span><br><span class="line">=&gt; a * x1 + b * y1 = b * x2 + (a - [a / b] * b) * y2;   []表示取整</span><br><span class="line">=&gt; a * x1 + b * y1 = a * y2 + b * (x2 - [a / b] * y2);</span><br><span class="line">=&gt; x1 = y2,  y1 = x2 - [a / b] * y2</span><br><span class="line"></span><br><span class="line">此时得出x1和y1的值基于x2和y2,因而可以将每次a * x2 + b * y2 = gcd(b, a % b)的x2、y2的值代入求得x1和y1, 多次递归后b = 0，x = 1, y = 0,　最终求得x和y的值，即a * x + b * y = gcd(a, b) 的方程组的解</span><br></pre></td></tr></table></figure>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/04/18/algorithm/3.扩展欧几里得算法/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-algorithm/1.枚举n个数的排列" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="../../2019/04/18/algorithm/1.枚举n个数的排列/" class="article-date">
-      <time datetime="2019-04-18T05:43:42.066Z" itemprop="datePublished">2019-04-18</time>
+      <a href="../../2019/06/02/algorithm/1.枚举n个数的排列/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.158Z" itemprop="datePublished">2019-06-02</time>
 </a>
 
 
@@ -410,7 +290,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="../../2019/04/18/algorithm/1.枚举n个数的排列/">枚举n个数的排列</a>
+      <a class="article-title" href="../../2019/06/02/algorithm/1.枚举n个数的排列/">枚举n个数的排列</a>
     </h1>
   
 
@@ -430,6 +310,250 @@
       
 
       
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Linux/linuxTip" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/06/02/Linux/linuxTip/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.118Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/06/02/Linux/linuxTip/">Linux下的技巧操作</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="一、好用的工具"><a href="#一、好用的工具" class="headerlink" title="一、好用的工具"></a>一、好用的工具</h1><ol>
+<li><p>autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录<br>j path: 进入path目录<br>j: 进入权值最高的目录<br>j -i[权重]: 增加权值<br>j -d[权重]: 减少权值<br>jo path: 打开目录<br>j -s: 显示自动跳转数据库中的条目</p>
+          
+      
+    </li></ol></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/06/02/Linux/linuxTip/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-LearnVim/VimKeyCut" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/06/02/LearnVim/VimKeyCut/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.118Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/06/02/LearnVim/VimKeyCut/">vim快捷键</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>[参考链接]<a href="https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html" target="_blank" rel="noopener">https://www.cnblogs.com/jy02414216/archive/2012/10/29/2745001.html</a><br>[参考链接]<a href="https://blog.csdn.net/scaleqiao/article/details/45153379" target="_blank" rel="noopener">https://blog.csdn.net/scaleqiao/article/details/45153379</a><br>
+          
+      
+    </p></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/06/02/LearnVim/VimKeyCut/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-GoodWebsiteCollection" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/06/02/GoodWebsiteCollection/" class="article-date">
+      <time datetime="2019-06-02T07:20:06.094Z" itemprop="datePublished">2019-06-02</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/06/02/GoodWebsiteCollection/">链接收藏</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h1 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a><font size="4">下载链接</font></h1><ol>
+<li>putty下载:&ensp;<a href="https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA" target="_blank" rel="noopener">https://pan.baidu.com/s/1X_IITIlSP5u_wnKPiOL-oA</a><br>&ensp;&ensp;&ensp; 提取码：8of8</li>
+</ol>
+<hr>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/06/02/GoodWebsiteCollection/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-markdown" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="../../2019/05/08/markdown/" class="article-date">
+      <time datetime="2019-05-08T06:10:13.758Z" itemprop="datePublished">2019-05-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="../../2019/05/08/markdown/">markdown语法学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>[markdown语法]<a href="https://www.jianshu.com/p/b03a8d7b1719" target="_blank" rel="noopener">https://www.jianshu.com/p/b03a8d7b1719</a><br>[markdown语法]<a href="https://www.appinn.com/markdown/#header" target="_blank" rel="noopener">https://www.appinn.com/markdown/#header</a><br>[markdown缩进]<a href="https://www.cnblogs.com/Flylater/p/6264799.html" target="_blank" rel="noopener">https://www.cnblogs.com/Flylater/p/6264799.html</a><br>[先来一头马克飞象(在线使用markdown)]<a href="https://maxiang.io/" target="_blank" rel="noopener">https://maxiang.io/</a><br>[markdown插入图片]<a href="https://blog.csdn.net/slaughterdevil/article/details/79255933" target="_blank" rel="noopener">https://blog.csdn.net/slaughterdevil/article/details/79255933</a><br>[添加百度云图片链接]<a href="https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/f006222806dfdcfbd3f0c880.html</a><br>
+          
+      
+    </p></div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="../../2019/05/08/markdown/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -624,67 +748,6 @@
 
 
   
-    <article id="post-Linux/linuxTip" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/03/27/Linux/linuxTip/" class="article-date">
-      <time datetime="2019-03-27T11:06:30.496Z" itemprop="datePublished">2019-03-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/03/27/Linux/linuxTip/">Linux下的技巧操作</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="一、好用的工具"><a href="#一、好用的工具" class="headerlink" title="一、好用的工具"></a>一、好用的工具</h1><ol>
-<li><p>autojump: 可以记录进入过的目录, 支持直接跳转到想到的目录<br>j path: 进入path目录<br>j: 进入权值最高的目录<br>j -i[权重]: 增加权值<br>j -d[权重]: 减少权值<br>jo path: 打开目录<br>j -s: 显示自动跳转数据库中的条目</p>
-          
-      
-    </li></ol></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/03/27/Linux/linuxTip/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-algorithm/lqb9" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
@@ -814,77 +877,6 @@
       
         <p class="article-more-link">
           <a href="../../2019/03/20/algorithm/lqb6/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-algorithm/lqb8" class="article article-type-post" itemscope="" itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="../../2019/03/19/algorithm/lqb8/" class="article-date">
-      <time datetime="2019-03-19T11:18:06.553Z" itemprop="datePublished">2019-03-19</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="../../2019/03/19/algorithm/lqb8/">第八届蓝桥杯真题解题报告</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><span id="0">目录：</span></p>
-<ol>
-<li><a href="#1">购物单</a></li>
-<li><a href="#2">等差素数列</a></li>
-<li><a href="#3">承压计算</a></li>
-<li><a href="#4">方格分割</a></li>
-<li><a href="#5">取数位</a></li>
-<li><a href="#6">最大公共子串</a></li>
-<li><a href="#7">日期问题</a></li>
-<li><a href="#8">包子凑数</a></li>
-<li><a href="#9">分巧克力</a></li>
-<li><a href="#10">k倍区间</a>
-          
-      
-    </li></ol></div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="../../2019/03/19/algorithm/lqb8/#more">阅读全文 >></a>
         </p>
       
       <div class="clearfix"></div>
